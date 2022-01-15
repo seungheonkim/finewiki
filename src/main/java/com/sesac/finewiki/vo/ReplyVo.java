@@ -3,8 +3,8 @@ package com.sesac.finewiki.vo;
 import java.sql.Date;
 
 public class ReplyVo {
-	private Integer reply_no;
-	private Integer data_no;
+	private int reply_no;
+	private int data_no;
 	private String reply_text;
 	private String reply_writer;
 	private Date reg_date;
@@ -14,8 +14,7 @@ public class ReplyVo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ReplyVo(Integer reply_no, Integer data_no, String reply_text, String reply_writer, Date reg_date,
-			Date update_date) {
+	public ReplyVo(int reply_no, int data_no, String reply_text, String reply_writer, Date reg_date, Date update_date) {
 		super();
 		this.reply_no = reply_no;
 		this.data_no = data_no;
@@ -25,19 +24,19 @@ public class ReplyVo {
 		this.update_date = update_date;
 	}
 
-	public Integer getReply_no() {
+	public int getReply_no() {
 		return reply_no;
 	}
 
-	public void setReply_no(Integer reply_no) {
+	public void setReply_no(int reply_no) {
 		this.reply_no = reply_no;
 	}
 
-	public Integer getData_no() {
+	public int getData_no() {
 		return data_no;
 	}
 
-	public void setData_no(Integer data_no) {
+	public void setData_no(int data_no) {
 		this.data_no = data_no;
 	}
 
@@ -78,5 +77,5 @@ public class ReplyVo {
 		return "ReplyVo [reply_no=" + reply_no + ", data_no=" + data_no + ", reply_text=" + reply_text
 				+ ", reply_writer=" + reply_writer + ", reg_date=" + reg_date + ", update_date=" + update_date + "]";
 	}
-
+	
 }

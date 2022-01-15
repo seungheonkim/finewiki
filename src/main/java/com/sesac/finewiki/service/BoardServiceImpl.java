@@ -5,6 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sesac.finewiki.paging.Criteria;
 import com.sesac.finewiki.paging.SearchCriteria;
@@ -26,8 +28,10 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.create(vo);
 	}
 
+	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public BoardVo read(Integer data_no) throws Exception {
+		boardDAO.updateHit(data_no);
 		return boardDAO.read(data_no);
 	}
 
@@ -64,6 +68,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int countSearchedBoards(SearchCriteria searchCriteria) throws Exception {
 		return boardDAO.countSearchedBoards(searchCriteria);
+	}
+
+	@Override
+	public List<BoardVo> memberBoardList(String mem_id) throws Exception {
+		return boardDAO.memberBoardList(mem_id);
 	}
 
 }

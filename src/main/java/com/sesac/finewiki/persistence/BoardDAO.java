@@ -28,4 +28,15 @@ public interface BoardDAO {
 
 	int countSearchedBoards(SearchCriteria searchCriteria) throws Exception;
 
+	void updateReplyCnt(Integer data_no, int amount) throws Exception;
+	
+	void updateHit(Integer data_no) throws Exception;
+
+
+	// 회원이 작성한 게시글 목록
+	List<BoardVo> memberBoardList(String mem_id) throws Exception;
+
+	// 회원 프로필 사진 수정
+	void updateMemberImg(BoardVo boardVo) throws Exception;
+
 }

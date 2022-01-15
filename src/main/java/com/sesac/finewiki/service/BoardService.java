@@ -24,5 +24,7 @@ public interface BoardService {
 	List<BoardVo> listSearch(SearchCriteria searchCriteria) throws Exception;
 
 	int countSearchedBoards(SearchCriteria searchCriteria) throws Exception;
+	
+	List<BoardVo> memberBoardList(String mem_id) throws Exception;
 
 }

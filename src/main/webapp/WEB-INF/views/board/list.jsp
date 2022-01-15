@@ -110,6 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<!-- ./wrapper -->
 
 	<!-- REQUIRED SCRIPTS -->
+	<%@ include file = "../include/plugin_js.jsp" %>
 	<script type="text/javascript">
 		var result = "${msg}";
 		if (result == "regSuccess") {

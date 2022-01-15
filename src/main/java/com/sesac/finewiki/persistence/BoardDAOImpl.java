@@ -1,6 +1,8 @@
 package com.sesac.finewiki.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -79,5 +81,28 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public int countSearchedBoards(SearchCriteria searchCriteria) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + ".countSearchedBoards", searchCriteria);
+	}
+
+	@Override
+	public void updateReplyCnt(Integer data_no, int amount) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("data_no", data_no);
+		paramMap.put("amount", amount);
+		sqlSession.update(NAMESPACE + ".updateReplyCnt", paramMap);
+	}
+
+	@Override
+	public void updateHit(Integer data_no) throws Exception {
+		sqlSession.update(NAMESPACE + ".updateHit", data_no);
+	}
+
+	@Override
+	public List<BoardVo> memberBoardList(String mem_id) throws Exception {
+		return sqlSession.selectList(NAMESPACE + ".memberBoardList", mem_id);
+	}
+
+	@Override
+	public void updateMemberImg(BoardVo boardVo) throws Exception {
+		sqlSession.update(NAMESPACE + ".updateMemberImg", boardVo);
 	}
 }

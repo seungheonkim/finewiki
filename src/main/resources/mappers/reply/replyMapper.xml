@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.reply.replyMapper">
 	<select id="list" resultMap="ReplyResultMap">
-	 SELECT reply_no , data_no ,
-		reply_text , reply_writer , reg_date , update_date FROM reply WHERE
+		SELECT reply_no , data_no ,
+		reply_text , reply_writer , reg_date ,
+		update_date FROM reply WHERE
 		data_no = #{data_no} ORDER BY reply_no
 	</select>
 	<insert id="create"> INSERT INTO reply ( data_no , reply_text ,
@@ -15,6 +16,11 @@
 	</update>
 	<delete id="delete"> DELETE FROM reply WHERE reply_no = #{reply_no}
 	</delete>
+	<select id="listPaging" resultMap="ReplyResultMap"> SELECT reply_no , data_no
+		, reply_text , reply_writer , reg_date , update_date , mem_img FROM
+		reply INNER JOIN my_member ON mem_id = reply_writer WHERE data_no
+		= #{data_no} ORDER BY reply_no DESC LIMIT #{criteria.pageStart},
+		#{criteria.perPageNum} </select>
 	<resultMap id="ReplyResultMap" type="ReplyVo">
 		<id property="reply_no" column="reply_no" />
 		<result property="data_no" column="data_no" />
@@ -22,13 +28,26 @@
 		<result property="reply_writer" column="reply_writer" />
 		<result property="reg_date" column="reg_date" />
 		<result property="update_date" column="update_date" />
+		<association property="vo" resultMap="MemberVoResultMap" />
 	</resultMap>
 	<resultMap id="BoardResultMap" type="BoardVo">
-		<id property="data_no" column="data_no" />
+		<id property="memberVo" column="memberVo" />
 		<result property="title" column="title" />
 		<result property="content" column="content" />
 		<result property="mem_nick" column="mem_nick" />
 		<result property="regdate" column="regdate" />
 		<result property="hit" column="hit" />
 	</resultMap>
+	<resultMap id="MemberVoResultMap" type="MemberVo">
+		<id property="mem_id" column="mem_id" />
+		<result property="mem_pw" column="mem_pw" />
+		<result property="mem_name" column="mem_name" />
+		<result property="mem_email" column="mem_email" />
+		<result property="mem_join_date" column="mem_join_date" />
+		<result property="mem_login_date" column="mem_login_date" />
+		<result property="mem_signature" column="mem_signature" />
+		<result property="mem_img" column="mem_img" />
+		<result property="mem_point" column="mem_point" />
+	</resultMap>
 </mapper>
+

@@ -62,10 +62,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											<textarea class="form-control" id="content" name="content"
 												rows="30" placeholder="내용을 입력해주세요" style="resize: none;"></textarea>
 										</div>
-										<div class="form-group">
+										<div class="form-group" hidden>
 											<label for="mem_nick">작성자</label> <input class="form-control"
-												id="mem_nick" name="mem_nick">
+												id="mem_nick" name="mem_nick" value="${login.mem_id}" readonly>
 										</div>
+
 									</div>
 									<div class="card-footer">
 										<button type="button" class="btn btn-primary">
@@ -109,6 +110,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<!-- ./wrapper -->
 
 	<!-- REQUIRED SCRIPTS -->
-
+	<%@ include file="../include/plugin_js.jsp"%>
 </body>
 </html>

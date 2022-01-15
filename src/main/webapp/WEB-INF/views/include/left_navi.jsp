@@ -9,14 +9,28 @@
 	<div class="sidebar">
 		<!-- Sidebar user panel (optional) -->
 		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
-			<div class="image">
-				<img src="${path}/dist/img/user2-160x160.jpg"
-					class="img-circle elevation-2" alt="User Image">
-			</div>
-			<div class="info">
-				<a href="#" class="d-block">Alexander Pierce</a>
-			</div>
+			<c:if test="${empty login}">
+				<div class="image">
+					<img src="${path}/dist/img/default-user-image.jpg"
+						class="img-circle elevation-2" alt="User Image">
+				</div>
+				<div class="info">
+					<%-- Status --%>
+					<a href="#"><i class="fa fa-circle text-danger"></i> Guest</a>
+				</div>
+			</c:if>
+			<c:if test="${not empty login}">
+				<div class="image">
+					<img src="${path}/dist/img/default-user-image.jpg"
+						class="img-circle elevation-2" alt="User Image">
+				</div>
+				<div class="info">
+					<%-- Status --%>
+					<a href="#"><i class="d-block"></i> ${login.mem_name}</a>
+				</div>
+			</c:if>
 		</div>
+
 		<!-- Sidebar Menu -->
 		<nav class="mt-2">
 			<ul class="nav nav-pills nav-sidebar flex-column"
@@ -50,7 +64,7 @@
 								<p>Write Page</p>
 						</a></li>
 						<!-- list pagin 목록버튼 추가  -->
-						<li class="nav-item"><a href="${path}/board/pagint/list"
+						<li class="nav-item"><a href="${path}/board/paging/list"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>List paging Page</p>
 						</a></li>
@@ -68,8 +82,8 @@
 								</a></li>
 								<!-- List Paging 목록 버튼 추가 -->
 								<li class="nav-item"><a
-									href="${path}/board/paging/search/list" class="nav-link">
-										<i class="far fa-circle nav-icon"></i>
+									href="${path}/board/paging/search/list" class="nav-link"> <i
+										class="far fa-circle nav-icon"></i>
 										<p>List Paging Search Page</p>
 								</a></li>
 							</ul></li>

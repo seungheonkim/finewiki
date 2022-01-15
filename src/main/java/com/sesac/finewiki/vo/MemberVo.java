@@ -8,7 +8,7 @@ public class MemberVo {
 	private String mem_name;
 	private String mem_email;
 	private String mem_birth;
-	private String mem_nick;
+	private String nick;
 	private Date mem_join_date;
 	private Date mem_login_date;
 	private String mem_signature;
@@ -16,7 +16,23 @@ public class MemberVo {
 	private int mem_point;
 
 	public MemberVo() {
+		// TODO Auto-generated constructor stub
+	}
 
+	public MemberVo(String mem_id, String mem_pw, String mem_name, String mem_email, String mem_birth, String nick,
+			Date mem_join_date, Date mem_login_date, String mem_signature, String mem_img, int mem_point) {
+		super();
+		this.mem_id = mem_id;
+		this.mem_pw = mem_pw;
+		this.mem_name = mem_name;
+		this.mem_email = mem_email;
+		this.mem_birth = mem_birth;
+		this.nick = nick;
+		this.mem_join_date = mem_join_date;
+		this.mem_login_date = mem_login_date;
+		this.mem_signature = mem_signature;
+		this.mem_img = mem_img;
+		this.mem_point = mem_point;
 	}
 
 	public String getMem_id() {
@@ -59,12 +75,12 @@ public class MemberVo {
 		this.mem_birth = mem_birth;
 	}
 
-	public String getMem_nick() {
-		return mem_nick;
+	public String getNick() {
+		return nick;
 	}
 
-	public void setMem_nick(String mem_nick) {
-		this.mem_nick = mem_nick;
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 
 	public Date getMem_join_date() {
@@ -110,7 +126,7 @@ public class MemberVo {
 	@Override
 	public String toString() {
 		return "MemberVo [mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_name=" + mem_name + ", mem_email="
-				+ mem_email + ", mem_birth=" + mem_birth + ", mem_nick=" + mem_nick + ", mem_join_date=" + mem_join_date
+				+ mem_email + ", mem_birth=" + mem_birth + ", nick=" + nick + ", mem_join_date=" + mem_join_date
 				+ ", mem_login_date=" + mem_login_date + ", mem_signature=" + mem_signature + ", mem_img=" + mem_img
 				+ ", mem_point=" + mem_point + "]";
 	}

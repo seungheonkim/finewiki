@@ -114,6 +114,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			</div>
 		</aside>
 		<!-- /.control-sidebar -->
+		<div class="box-footer">
+			<form role="form" method="post">
+				<input type="hidden" name="data_no" value="${board.data_no}">
+				<input type="hidden" name="page" value="${searchCriteria.page}">
+				<input type="hidden" name="perPageNum"
+					value="${searchCriteria.perPageNum}"> <input type="hidden"
+					name="searchType" value="${searchCriteria.searchType}"> <input
+					type="hidden" name="keyword" value="${searchCriteria.keyword}">
+			</form>
+			<button type="submit" class="btn btn-primary listBtn">
+				<i class="fa fa-list"></i> 목록
+			</button>
+			<c:if test="${login.mem_id == board.mem_nick}">
+				<div class="pull-right">
+					<button type="submit" class="btn btn-warning modBtn">
+						<i class="fa fa-edit"></i> 수정
+					</button>
+					<button type="submit" class="btn btn-danger delBtn">
+						<i class="fa fa-trash"></i> 삭제
+					</button>
+				</div>
+			</c:if>
+		</div>
 
 		<!-- Main Footer -->
 		<%@ include file="../../include/footer.jsp"%>
@@ -121,6 +144,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<!-- ./wrapper -->
 
 	<!-- REQUIRED SCRIPTS -->
+	<%@ include file="../../include/plugin_js.jsp"%>
 	<script type="text/javascript">
 		$(document)
 				.ready(

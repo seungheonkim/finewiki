@@ -26,8 +26,8 @@ public class MemberDAOImpl implements MemberDAO {
 
 	// 회원가입처리
 	@Override
-	public void register(MemberVo memberVo) throws Exception {
-		sqlSession.insert(NAMESPACE + ".register", memberVo);
+	public void register(MemberVo vo) throws Exception {
+		sqlSession.insert(NAMESPACE + ".register", vo);
 	}
 
 	// 로그인 처리
@@ -50,7 +50,36 @@ public class MemberDAOImpl implements MemberDAO {
 	// 세션키 검증
 	@Override
 	public MemberVo checkUserWithSessionKey(String value) throws Exception {
-		return null;
+		return sqlSession.selectOne(NAMESPACE + ".checkUserWithSessionKey", value);
+	}
+
+	// 회원정보 수정처리
+	@Override
+	public void updateMember(MemberVo vo) throws Exception {
+		sqlSession.update(NAMESPACE + ".updateMember", vo);
+	}
+
+	// 회원 비밀번호
+	@Override
+	public MemberVo getMember(String mem_id) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".getMember", mem_id);
+	}
+
+	// 회원 비밀번호 수정처리
+	@Override
+	public void updatePw(MemberVo vo) throws Exception {
+		sqlSession.update(NAMESPACE + "updatePw", vo);
+
+	}
+
+	// 회원 프로필 사진 수정
+	@Override
+	public void updateMem_image(String mem_id, String mem_img) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("mem_id", mem_id);
+		paramMap.put("mem_img", mem_img);
+		sqlSession.update(NAMESPACE + ".updateMem_image", paramMap);
+
 	}
 
 }

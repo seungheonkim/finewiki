@@ -22,8 +22,8 @@ public class MemberServiceImpl implements MemberService {
 
 	// 회원 가입 처리
 	@Override
-	public void register(MemberVo memberVo) throws Exception {
-		memberDAO.register(memberVo);
+	public void register(MemberVo vo) throws Exception {
+		memberDAO.register(vo);
 	}
 
 	@Override
@@ -39,6 +39,30 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVo checkLoginBefore(String value) throws Exception {
 		return memberDAO.checkUserWithSessionKey(value);
+	}
+
+	// 회원정보 수정처리
+	@Override
+	public void modifyMember(MemberVo vo) throws Exception {
+		memberDAO.updateMember(vo);
+	}
+
+	// 회원 비밀번호
+	@Override
+	public MemberVo getMember(String mem_id) throws Exception {
+		return memberDAO.getMember(mem_id);
+	}
+
+	// 회원 비밀번호 수정처리
+	@Override
+	public void modifyPw(MemberVo vo) throws Exception {
+		memberDAO.updatePw(vo);
+	}
+
+	// 회원 프로필 사진 수정
+	@Override
+	public void modifyMem_image(String mem_id, String mem_img) throws Exception {
+		memberDAO.updateMem_image(mem_id, mem_img);
 	}
 
 }

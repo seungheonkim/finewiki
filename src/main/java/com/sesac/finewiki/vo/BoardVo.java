@@ -1,24 +1,29 @@
 package com.sesac.finewiki.vo;
 
 public class BoardVo {
-	private int data_no, board_no, hit, goodno;
+	private int data_no, board_no, hit;
 	private String mem_nick, title, content, regdate;
-
+	private int replyCnt;
+	private String memberImg;
+	private MemberVo vo;
+	
 	public BoardVo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BoardVo(int data_no, int board_no, int hit, int goodno, String mem_nick, String title, String content,
-			String regdate) {
+	public BoardVo(int data_no, int board_no, int hit, String mem_nick, String title, String content, String regdate,
+			int replyCnt, String memberImg, MemberVo vo) {
 		super();
 		this.data_no = data_no;
 		this.board_no = board_no;
 		this.hit = hit;
-		this.goodno = goodno;
 		this.mem_nick = mem_nick;
 		this.title = title;
 		this.content = content;
 		this.regdate = regdate;
+		this.replyCnt = replyCnt;
+		this.memberImg = memberImg;
+		this.vo = vo;
 	}
 
 	public int getData_no() {
@@ -43,14 +48,6 @@ public class BoardVo {
 
 	public void setHit(int hit) {
 		this.hit = hit;
-	}
-
-	public int getGoodno() {
-		return goodno;
-	}
-
-	public void setGoodno(int goodno) {
-		this.goodno = goodno;
 	}
 
 	public String getMem_nick() {
@@ -85,10 +82,35 @@ public class BoardVo {
 		this.regdate = regdate;
 	}
 
-	@Override
-	public String toString() {
-		return "BoardVo [data_no=" + data_no + ", board_no=" + board_no + ", hit=" + hit + ", goodno=" + goodno
-				+ ", mem_nick=" + mem_nick + ", title=" + title + ", content=" + content + ", regdate=" + regdate + "]";
+	public int getReplyCnt() {
+		return replyCnt;
 	}
 
+	public void setReplyCnt(int replyCnt) {
+		this.replyCnt = replyCnt;
+	}
+
+	public String getMemberImg() {
+		return memberImg;
+	}
+
+	public void setMemberImg(String memberImg) {
+		this.memberImg = memberImg;
+	}
+
+	public MemberVo getMemberVo() {
+		return vo;
+	}
+
+	public void setMemberVo(MemberVo vo) {
+		this.vo = vo;
+	}
+
+	@Override
+	public String toString() {
+		return "BoardVo [data_no=" + data_no + ", board_no=" + board_no + ", hit=" + hit + ", mem_nick=" + mem_nick
+				+ ", title=" + title + ", content=" + content + ", regdate=" + regdate + ", replyCnt=" + replyCnt
+				+ ", memberImg=" + memberImg + ", vo=" + vo + "]";
+	}
+	
 }

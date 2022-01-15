@@ -55,6 +55,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<tr>
 											<th style="width: 30px">#</th>
 											<th>제목</th>
+											<td><a
+												href="${path}/board/paging/search/read${pageMaker.makeSearch(pageMaker.criteria.page)}&data_no=${board.data_no}">
+													${board.title} </a> <span class="badge bg-teal"><i
+													class="fas fa-comment"></i> + ${board.replyCnt}</span></td>
+
 											<th style="width: 100px">작성자</th>
 											<th style="width: 150px">작성시간</th>
 											<th style="width: 60px">조회</th>
@@ -172,10 +177,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 	<!-- Main Footer -->
 	<%@ include file="../..//include/footer.jsp"%>
-	</div>
+
 	<!-- ./wrapper -->
 
 	<!-- REQUIRED SCRIPTS -->
+	<%@ include file="../../include/plugin_js.jsp"%>
 	<script>
 		$(document)
 				.ready(
@@ -188,12 +194,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							} else if (result == "delSuccess") {
 								alert("게시글 삭제가 완료되었습니다.");
 							}
-							$("#searchBtn").on("click",function(event) {
-								self.location = 
-									"${path}/board/paging/search/list${pageMaker.makeQuery(1)}"
-									+ "&searchType="+ $("select option:selected").val()
-									+ "&keyword="+ encodeURIComponent($("#keywordInput").val());
-									});
+							$("#searchBtn")
+									.on(
+											"click",
+											function(event) {
+												self.location = "${path}/board/paging/search/list${pageMaker.makeQuery(1)}"
+														+ "&searchType="
+														+ $(
+																"select option:selected")
+																.val()
+														+ "&keyword="
+														+ encodeURIComponent($(
+																"#keywordInput")
+																.val());
+											});
 						});
 	</script>
 

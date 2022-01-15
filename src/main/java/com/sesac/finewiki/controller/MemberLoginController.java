@@ -42,19 +42,19 @@ public class MemberLoginController {
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
 	public void loginPOST(LoginDTO loginDTO, HttpSession httpSession, Model model) throws Exception {
 
-		MemberVo memberVo = memberService.login(loginDTO);
+		MemberVo vo = memberService.login(loginDTO);
 
-		if (memberVo == null || !BCrypt.checkpw(loginDTO.getMem_pw(), memberVo.getMem_pw())) {
+		if (vo == null || !BCrypt.checkpw(loginDTO.getMem_pw(), vo.getMem_pw())) {
 			return;
 		}
 
-		model.addAttribute("member", memberVo);
+		model.addAttribute("member", vo);
 
 		// 로그인 유지를 선택할 경우
 		if (loginDTO.isUseCookie()) {
 			int amount = 60 * 60 * 24 * 7; // 7일
 			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount)); // 로그인 유지기간 설정
-			memberService.keepLogin(memberVo.getMem_id(), httpSession.getId(), sessionLimit);
+			memberService.keepLogin(vo.getMem_id(), httpSession.getId(), sessionLimit);
 		}
 	}
 
@@ -66,7 +66,7 @@ public class MemberLoginController {
 		Object object = httpSession.getAttribute("login");
 
 		if (object != null) {
-			MemberVo memberVo = (MemberVo) object;
+			MemberVo vo = (MemberVo) object;
 			httpSession.removeAttribute("login");
 			httpSession.invalidate();
 			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
@@ -75,7 +75,7 @@ public class MemberLoginController {
 				loginCookie.setPath("/");
 				loginCookie.setMaxAge(0);
 				response.addCookie(loginCookie);
-				memberService.keepLogin(memberVo.getMem_id(), "none", new Date(0));
+				memberService.keepLogin(vo.getMem_id(), "none", new Date(0));
 			}
 		}
 

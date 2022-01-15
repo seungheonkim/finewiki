@@ -32,11 +32,11 @@ public class MemberRegisterController {
 
 	    // 회원가입 처리
 	    @RequestMapping(value = "/register", method = RequestMethod.POST)
-	    public String registerPOST(MemberVo memberVo, RedirectAttributes redirectAttributes) throws Exception {
+	    public String registerPOST(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
 
-	        String hashedPw = BCrypt.hashpw(memberVo.getMem_pw(), BCrypt.gensalt());
-	        memberVo.setMem_pw(hashedPw);
-	        memberService.register(memberVo);
+	        String hashedPw = BCrypt.hashpw(vo.getMem_pw(), BCrypt.gensalt());
+	        vo.setMem_pw(hashedPw);
+	        memberService.register(vo);
 	        redirectAttributes.addFlashAttribute("msg", "REGISTERED");
 
 	        return "redirect:/member/login";
