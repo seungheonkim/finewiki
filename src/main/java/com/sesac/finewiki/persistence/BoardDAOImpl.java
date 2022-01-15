@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.sesac.finewiki.paging.Criteria;
+import com.sesac.finewiki.paging.SearchCriteria;
 import com.sesac.finewiki.vo.BoardVo;
 
 @Repository
@@ -70,4 +71,13 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne(NAMESPACE + ".countBoards", criteria);
 	}
 
+	@Override
+	public List<BoardVo> listSearch(SearchCriteria searchCriteria) throws Exception {
+		return sqlSession.selectList(NAMESPACE + ".listSearch", searchCriteria);
+	}
+
+	@Override
+	public int countSearchedBoards(SearchCriteria searchCriteria) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".countSearchedBoards", searchCriteria);
+	}
 }

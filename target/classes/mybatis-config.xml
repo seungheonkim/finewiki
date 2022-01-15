@@ -5,6 +5,7 @@
     <typeAliases>
         <typeAlias type="com.sesac.finewiki.vo.MemberVo" alias="MemberVo" />
         <typeAlias type="com.sesac.finewiki.vo.BoardVo" alias="BoardVo" />
+        <typeAlias type="com.sesac.finewiki.vo.ReplyVo" alias="ReplyVo" />
     </typeAliases>
 
 </configuration>

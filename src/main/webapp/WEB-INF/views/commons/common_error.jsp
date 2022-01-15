@@ -3,7 +3,7 @@
 <!-- This is a starter template page. Use this page to start your new project from scratch. This page gets rid of all links and provides the needed markup only. -->
 <html lang="en">
 <%@ include file="../include/head.jsp"%>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-boxed">
 	<div class="wrapper">
 		<!-- Navbar -->
 		<%@ include file="../include/main_header.jsp"%>

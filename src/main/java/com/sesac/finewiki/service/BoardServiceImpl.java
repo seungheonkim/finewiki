@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.sesac.finewiki.paging.Criteria;
+import com.sesac.finewiki.paging.SearchCriteria;
 import com.sesac.finewiki.persistence.BoardDAO;
 import com.sesac.finewiki.vo.BoardVo;
 
@@ -16,13 +17,13 @@ public class BoardServiceImpl implements BoardService {
 	private final BoardDAO boardDAO;
 
 	@Inject
-	public BoardServiceImpl(BoardDAO boardDAO) {
-		this.boardDAO = boardDAO;
+	public BoardServiceImpl(BoardDAO vo) {
+		this.boardDAO = vo;
 	}
 
 	@Override
-	public void create(BoardVo boardVo) throws Exception {
-		boardDAO.create(boardVo);
+	public void create(BoardVo vo) throws Exception {
+		boardDAO.create(vo);
 	}
 
 	@Override
@@ -31,8 +32,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void update(BoardVo articleVO) throws Exception {
-		boardDAO.update(articleVO);
+	public void update(BoardVo vo) throws Exception {
+		boardDAO.update(vo);
 	}
 
 	@Override
@@ -48,6 +49,21 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVo> listCriteria(Criteria criteria) throws Exception {
 		return boardDAO.listCriteria(criteria);
+	}
+
+	@Override
+	public int countBoards(Criteria criteria) throws Exception {
+		return boardDAO.countBoards(criteria);
+	}
+
+	@Override
+	public List<BoardVo> listSearch(SearchCriteria searchCriteria) throws Exception {
+		return boardDAO.listSearch(searchCriteria);
+	}
+
+	@Override
+	public int countSearchedBoards(SearchCriteria searchCriteria) throws Exception {
+		return boardDAO.countSearchedBoards(searchCriteria);
 	}
 
 }

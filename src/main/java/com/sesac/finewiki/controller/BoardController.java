@@ -1,7 +1,6 @@
 package com.sesac.finewiki.controller;
 
 import javax.inject.Inject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -10,17 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.sesac.finewiki.paging.Criteria;
-import com.sesac.finewiki.paging.PageMaker;
-import com.sesac.finewiki.service.BoardService;
 import com.sesac.finewiki.vo.BoardVo;
+import com.sesac.finewiki.service.BoardService;
 
 @Controller
 @RequestMapping("/board")
 public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
-
 	private final BoardService boardService;
 
 	@Inject
@@ -28,88 +24,76 @@ public class BoardController {
 		this.boardService = boardService;
 	}
 
-	// 등록 페이지 이동
+// 등록 페이지 이동
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String writeGET() {
-
 		logger.info("write GET...");
-
 		return "/board/write";
 	}
-
 	// 등록 처리
-	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String writePOST(BoardVo boardVo, RedirectAttributes redirectAttributes) throws Exception {
 
-		logger.info("write POST...");
-		logger.info(boardVo.toString());
-		boardService.create(boardVo);
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public String writePOST(BoardVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		logger.info("writePOST...");
+		logger.info(vo.toString());
+		boardService.create(vo);
 		;
 		redirectAttributes.addFlashAttribute("msg", "regSuccess");
-
 		return "redirect:/board/list";
 	}
 
 	// 목록 페이지 이동
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model) throws Exception {
 
+	public String list(Model model) throws Exception {
 		logger.info("list ...");
 		model.addAttribute("boards", boardService.listAll());
-
 		return "/board/list";
+	}
+
+	@RequestMapping(value = "/listCriteria", method = RequestMethod.GET)
+	public String listCriteria(Model model, Criteria criteria) throws Exception {
+		logger.info("listCriteria ...");
+		model.addAttribute("boards", boardService.listCriteria(criteria));
+		return "/board/list_criteria";
 	}
 
 	// 조회 페이지 이동
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
-	public String read(@RequestParam("data_no") int data_no, Model model) throws Exception {
 
+	public String read(@RequestParam("data_no") int data_no, Model model) throws Exception {
 		logger.info("read ...");
 		model.addAttribute("board", boardService.read(data_no));
-
 		return "/board/read";
 	}
 
 	// 수정 페이지 이동
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+
 	public String modifyGET(@RequestParam("data_no") int data_no, Model model) throws Exception {
-
 		logger.info("modifyGet ...");
-		model.addAttribute("article", boardService.read(data_no));
-
+		model.addAttribute("board", boardService.read(data_no));
 		return "/board/modify";
 	}
 
 	// 수정 처리
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modifyPOST(BoardVo boardVo, RedirectAttributes redirectAttributes) throws Exception {
 
+	public String modifyPOST(BoardVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		logger.info("modifyPOST ...");
-		boardService.update(boardVo);
+		boardService.update(vo);
 		redirectAttributes.addFlashAttribute("msg", "modSuccess");
-
 		return "redirect:/board/list";
 	}
 
 	// 삭제 처리
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public String remove(@RequestParam("data_no") int data_no, RedirectAttributes redirectAttributes) throws Exception {
 
+	public String remove(@RequestParam("data_no") int data_no, RedirectAttributes redirectAttributes)
+			throws Exception {
 		logger.info("remove ...");
 		boardService.delete(data_no);
 		redirectAttributes.addFlashAttribute("msg", "delSuccess");
-
 		return "redirect:/board/list";
-	}
-
-	@RequestMapping(value = "/listPaging", method = RequestMethod.GET)
-	public String listPaging(Model model, Criteria criteria) throws Exception {
-		logger.info("listPaging ...");
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCriteria(criteria);
-		pageMaker.setTotalCount(1000);
-		model.addAttribute("boards", boardService.listCriteria(criteria));
-		model.addAttribute("pageMaker", pageMaker);
-		return "/board/list_paging";
 	}
 }

@@ -2,4 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sesac.finewiki.mappers.member.memberMapper">
 
+    <insert id="register">
+        INSERT INTO my_member (
+            mem_id
+            , mem_pw
+            , mem_name
+            , mem_email
+            , mem_birth
+            , nick
+        ) VALUES (
+            #{mem_id}
+            , #{mem_pw}
+            , #{mem_name}
+            , #{mem_email}
+            , #{mem_birth}
+            , #{nick}
+        )
+    </insert>
+    
+  	 <select id="login" resultMap="memberVOResultMap">
+    	SELECT
+    	  *
+    	FROM my_member
+    	WHERE mem_id = #{mem_id}
+    </select>
+    
+    <update id="keepLogin"> 
+    	UPDATE my_member 
+    	SET session_key = #{session_id}, 
+    		session_limit = #{sessionLimit} 
+    	WHERE mem_id = #{mem_id} 
+    </update> 
+    
+    <select id="checkUserWithSessionKey" resultMap="memberVOResultMap"> 
+	    SELECT 
+	    * 
+	    FROM my_member
+	    WHERE session_key = #{value} 
+    </select>
+
+
 </mapper>

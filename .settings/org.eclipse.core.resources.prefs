@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/WEB-INF/views/board/list.jsp=UTF-8
-encoding//src/main/webapp/WEB-INF/views/board/list_paging.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/board/modify.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/board/read.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/board/write.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/include/left_navi.jsp=UTF-8

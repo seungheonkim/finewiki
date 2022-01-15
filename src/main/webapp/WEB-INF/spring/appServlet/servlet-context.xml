@@ -26,6 +26,34 @@
 	
 	<context:component-scan base-package="com.sesac.finewiki" />
 	
-	
+
+	<beans:bean id="loginInterceptor" class="com.sesac.finewiki.interceptor.LoginInterceptor"/>
+	<beans:bean id="authInterceptor" class="com.sesac.finewiki.interceptor.AuthInterceptor"/>
+	<beans:bean id="rememberMeInterceptor" class="com.sesac.finewiki.interceptor.RememberMeInterceptor"/>
+	<beans:bean id="loginAfterInterceptor" class="com.sesac.finewiki.interceptor.LoginAfterInterceptor"/>
+
+	<interceptors>
+        <interceptor>
+            <mapping path="/member/loginPost"/>
+            <beans:ref bean="loginInterceptor"/>
+        </interceptor>
+        <interceptor>
+            <mapping path="/board/paging/search/write"/>
+            <mapping path="/board/paging/search/modify"/>
+            <mapping path="/board/paging/search/remove"/>
+            <mapping path="/member/info"/>
+            <beans:ref bean="authInterceptor"/>
+        </interceptor>
+        <interceptor> 
+        	<mapping path="/**/"/> 
+        	<beans:ref bean="rememberMeInterceptor"/> 
+        </interceptor>
+        <interceptor> 
+	        <mapping path="/member/login"/> 
+	        <mapping path="/member/register"/> 
+	        <beans:ref bean="loginAfterInterceptor"/> 
+        </interceptor>
+
+    </interceptors>
 	
 </beans:beans>

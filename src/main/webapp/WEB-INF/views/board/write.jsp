@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
 <%@ include file="../include/head.jsp"%>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-boxed">
 	<div class="wrapper">
 
 		<!-- Navbar -->
@@ -44,67 +44,71 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			<!-- Main content -->
 			<div class="content">
 				<div class="container-fluid">
-					<div class="col-lg-12">
-						<form role="form" id="writeForm" method="post"
-							action="${path}/board/write">
-							<div class="card">
-								<div class="card-header with-border">
-									<h3 class="card-title">게시글 작성</h3>
-								</div>
-								<div class="card-body">
-									<div class="form-group">
-										<label for="title">제목</label> <input class="form-control"
-											id="title" name="title" placeholder="제목을 입력해주세요">
+					<div class="row">
+						<div class="col-lg-12">
+							<form role="form" id="writeForm" method="post"
+								action="${path}/board/write">
+								<div class="card">
+									<div class="card-header with-border">
+										<h3 class="card-title">게시글 작성</h3>
 									</div>
-									<div class="form-group">
-										<label for="content">내용</label>
-										<textarea class="form-control" id="content" name="content"
-											rows="30" placeholder="내용을 입력해주세요" style="resize: none;"></textarea>
+									<div class="card-body">
+										<div class="form-group">
+											<label for="title">제목</label> <input class="form-control"
+												id="title" name="title" placeholder="제목을 입력해주세요">
+										</div>
+										<div class="form-group">
+											<label for="content">내용</label>
+											<textarea class="form-control" id="content" name="content"
+												rows="30" placeholder="내용을 입력해주세요" style="resize: none;"></textarea>
+										</div>
+										<div class="form-group">
+											<label for="mem_nick">작성자</label> <input class="form-control"
+												id="mem_nick" name="mem_nick">
+										</div>
 									</div>
-									<div class="form-group">
-										<label for="writer">작성자</label> <input class="form-control"
-											id="writer" name="writer">
-									</div>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-primary">
-										<i class="fa fa-list"></i> 목록
-									</button>
-									<div class="float-right">
-										<button type="reset" class="btn btn-warning">
-											<i class="fa fa-reply"></i> 초기화
+									<div class="card-footer">
+										<button type="button" class="btn btn-primary">
+											<i class="fa fa-list"></i> 목록
 										</button>
-										<button type="submit" class="btn btn-success">
-											<i class="fa fa-save"></i> 저장
-										</button>
+										<div class="float-right">
+											<button type="reset" class="btn btn-warning">
+												<i class="fa fa-reply"></i> 초기화
+											</button>
+											<button type="submit" class="btn btn-success">
+												<i class="fa fa-save"></i> 저장
+											</button>
+										</div>
 									</div>
 								</div>
-							</div>
-						</form>
+							</form>
+						</div>
+						<!-- /.col-md-6 -->
 					</div>
-
-					<!-- /.container-fluid -->
+					<!-- /.row -->
 				</div>
-				<!-- /.content -->
+				<!-- /.container-fluid -->
 			</div>
-			<!-- /.content-wrapper -->
-
-			<!-- Control Sidebar -->
-			<aside class="control-sidebar control-sidebar-dark">
-				<!-- Control sidebar content goes here -->
-				<div class="p-3">
-					<h5>Title</h5>
-					<p>Sidebar content</p>
-				</div>
-			</aside>
-			<!-- /.control-sidebar -->
-
-			<!-- Main Footer -->
-			<%@ include file="../include/footer.jsp"%>
+			<!-- /.content -->
 		</div>
-		<!-- ./wrapper -->
+		<!-- /.content-wrapper -->
 
-		<!-- REQUIRED SCRIPTS -->
-		
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+			<div class="p-3">
+				<h5>Title</h5>
+				<p>Sidebar content</p>
+			</div>
+		</aside>
+		<!-- /.control-sidebar -->
+
+		<!-- Main Footer -->
+		<%@ include file="../include/footer.jsp"%>
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- REQUIRED SCRIPTS -->
+
 </body>
 </html>
