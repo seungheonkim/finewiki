@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -44,7 +46,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 				<div class="container-fluid">
 					<div class="col-lg-12">
 						<form role="form" id="writeForm" method="post"
-							action="${path}/article/write">
+							action="${path}/board/write">
 							<div class="card">
 								<div class="card-header with-border">
 									<h3 class="card-title">게시글 작성</h3>

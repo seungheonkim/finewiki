@@ -1,52 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sesac.finewiki.mappers.member.boardMapper">
-<insert id="create">
-        INSERT INTO board_data (
-            data_no
-            , title
-            , content
-            , mem_nick
-            , regdate
-            , viewcnt
-        ) VALUES (
-            #{data_no}
-            , #{title}
-            , #{content}
-            , #{mem_nick}
-            , #{regDate}
-            , #{viewCnt}
-        )
-    </insert>
+	<insert id="create">
+		INSERT INTO board_data (
+		data_no
+		, title
+		, content
+		,
+		mem_nick
+		, regdate
+		, hit
+		) VALUES (
+		#{data_no}
+		, #{title}
+		, #{content}
+		,
+		#{mem_nick}
+		, #{regDate}
+		, #{hit}
+		)
+	</insert>
 
-    <select id="read" resultMap="BoardResultMap">
-        SELECT
-            data_no
-            , title
-            , content
-            , mem_nick
-            , regdate
-            , viewcnt
-        FROM
-            board_data
-        WHERE data_no = #{data_no}
-    </select>
+	<select id="read" resultMap="BoardResultMap">
+		SELECT
+		data_no
+		, title
+		, content
+		,
+		mem_nick
+		, regdate
+		, hit
+		FROM
+		board_data
+		WHERE data_no = #{data_no}
+	</select>
 
-    <update id="update">
-        UPDATE board_data
-        SET
-            title = #{title}
-            , content = #{content}
-        WHERE
-            data_no = #{data_no}
-    </update>
+	<update id="update">
+		UPDATE board_data
+		SET
+		title = #{title}
+		, content =
+		#{content}
+		WHERE
+		data_no = #{data_no}
+	</update>
 
-    <delete id="delete">
-        DELETE FROM board_data
-        WHERE data_no = #{data_no}
-    </delete>
+	<delete id="delete">
+		DELETE FROM board_data
+		WHERE data_no = #{data_no}
+	</delete>
 
-    <select id="listAll" resultType="BoardVo">
+	<select id="listAll" resultType="BoardVo">
         <![CDATA[
         SELECT
             data_no,
@@ -59,21 +63,21 @@
         WHERE data_no > 0
         ORDER BY data_no DESC, regdate DESC
         ]]>
-    </select>
+	</select>
 
-    <resultMap id="BoardResultMap" type="BoardVO">
-        <id property="data_no" column="data_no"/>
-        <result property="title" column="title" />
-        <result property="content" column="content" />
-        <result property="mem_nick" column="mem_nick" />
-        <result property="regdate" column="regdate" />
-        <result property="hit" column="hit" />
-    </resultMap>
-    
-    <select id="listPaging" resultMap="BoardResultMap"> 
+	<resultMap id="BoardResultMap" type="BoardVO">
+		<id property="data_no" column="data_no" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="mem_nick" column="mem_nick" />
+		<result property="regdate" column="regdate" />
+		<result property="hit" column="hit" />
+	</resultMap>
+
+	<select id="listPaging" resultMap="BoardResultMap"> 
     <![CDATA[ 
     SELECT 
-    	article_no, 
+    	data_no, 
     	title, 
     	content, 
     	mem_nick, 
@@ -83,10 +87,10 @@
     	WHERE data_no > 0 
     	ORDER BY data_no DESC, 
     	regdate DESC LIMIT #{page}, 10 
-    	]]> 
-    </select>
-    
-    <select id="listCriteria" resultMap="BoardResultMap"> 
+    	]]>
+	</select>
+
+	<select id="listCriteria" resultMap="BoardResultMap"> 
 	    <![CDATA[ 
 	    SELECT 
 		    data_no, 
@@ -99,7 +103,11 @@
 	    WHERE data_no > 0 
 	    ORDER BY data_no DESC, regdate DESC 
 	    LIMIT #{pageStart}, #{perPageNum} 
-	    ]]> 
-    </select>
+	    ]]>
+	</select>
+	<select id="countArticles" resultType="int">
+	 <![CDATA[ SELECT COUNT(article_no) FROM tb_article WHERE article_no > 0 ]]>
+	</select>
+
 
 </mapper>

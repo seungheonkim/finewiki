@@ -67,7 +67,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public int countBoards(Criteria criteria) throws Exception {
-		return sqlSession.selectOne(NAMESPACE + ".countArticles", criteria);
+		return sqlSession.selectOne(NAMESPACE + ".countBoards", criteria);
 	}
 
 }
