@@ -100,5 +100,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<!-- ./wrapper -->
 
 		<!-- REQUIRED SCRIPTS -->
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				var formObj = $("form[role='form']");
+				console.log(formObj);
+
+				$(".modBtn").on("click", function() {
+					formObj.attr("action", "${path}/board/modify");
+					formObj.attr("method", "get");
+					formObj.submit();
+				});
+
+				$(".delBtn").on("click", function() {
+					formObj.attr("action", "${path}/board/remove");
+					formObj.submit();
+				});
+
+				$(".listBtn").on("click", function() {
+					self.location = "${path}/board/list"
+				});
+
+			});
+		</script>
 </body>
 </html>

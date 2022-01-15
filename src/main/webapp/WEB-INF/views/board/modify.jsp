@@ -20,20 +20,47 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			<!-- Content Header (Page header) -->
 			<div class="content-header">
 				<div class="container-fluid">
-					<div class="row mb-2">
-						<div class="col-sm-6">
-							<h1 class="m-0">Starter Page</h1>
-						</div>
-						<!-- /.col -->
-						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Starter Page</li>
-							</ol>
-						</div>
-						<!-- /.col -->
+					<div class="col-lg-12">
+						<form role="form" id="writeForm" method="post"
+							action="${path}/board/modify">
+							<div class="card">
+								<div class="card-header">
+									<h3 class="card-title">게시글 작성</h3>
+								</div>
+								<div class="card-body">
+									<input type="hidden" name="data_no"
+										value="${board.data_no}">
+									<div class="form-group">
+										<label for="title">제목</label> <input class="form-control"
+											id="title" name="title" placeholder="제목을 입력해주세요"
+											value="${board.title}">
+									</div>
+									<div class="form-group">
+										<label for="content">내용</label>
+										<textarea class="form-control" id="content" name="content"
+											rows="30" placeholder="내용을 입력해주세요" style="resize: none;">${board.content}</textarea>
+									</div>
+									<div class="form-group">
+										<label for="mem_nick">작성자</label> <input class="form-control"
+											id="mem_nick" name="mem_nick" value="${board.mem_nick}" readonly>
+									</div>
+								</div>
+								<div class="card-footer">
+									<button type="button" class="btn btn-primary">
+										<i class="fa fa-list"></i> 목록
+									</button>
+									<div class="float-right">
+										<button type="button" class="btn btn-warning cancelBtn">
+											<i class="fa fa-trash"></i> 취소
+										</button>
+										<button type="submit" class="btn btn-success modBtn">
+											<i class="fa fa-save"></i> 수정 저장
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
 					</div>
-					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
 			</div>
@@ -45,17 +72,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 					<div class="col-lg-12">
 						<div class="card">
 							<div class="card-header">
-								<h3 class="card-title">게시글 목록</h3>
+								<h3 class="card-title">ê²ìê¸ ëª©ë¡</h3>
 							</div>
 							<div class="card-body">
 								<table class="table table-bordered">
 									<tbody>
 										<tr>
 											<th style="width: 30px">#</th>
-											<th>제목</th>
-											<th style="width: 100px">작성자</th>
-											<th style="width: 150px">작성시간</th>
-											<th style="width: 60px">조회</th>
+											<th>ì ëª©</th>
+											<th style="width: 100px">ìì±ì</th>
+											<th style="width: 150px">ìì±ìê°</th>
+											<th style="width: 60px">ì¡°í</th>
 										</tr>
 										<c:forEach items="${articles}" var="article">
 											<tr>
@@ -75,7 +102,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								<div class="float-right">
 									<button type="button" class="btn btn-success btn-flat"
 										id="writeBtn">
-										<i class="fa fa-pencil"></i> 글쓰기
+										<i class="fa fa-pencil"></i> ê¸ì°ê¸°
 									</button>
 								</div>
 							</div>
@@ -108,11 +135,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<script type="text/javascript">
 			var result = "${msg}";
 			if (result == "regSuccess") {
-				alert("게시글 등록이 완료되었습니다.");
+				alert("ê²ìê¸ ë±ë¡ì´ ìë£ëììµëë¤.");
 			} else if (result == "modSuccess") {
-				alert("게시글 수정이 완료되었습니다.");
+				alert("ê²ìê¸ ìì ì´ ìë£ëììµëë¤.");
 			} else if (result == "delSuccess") {
-				alert("게시글 삭제가 완료되었습니다.");
+				alert("ê²ìê¸ ì­ì ê° ìë£ëììµëë¤.");
 			}
 		</script>
 </body>
