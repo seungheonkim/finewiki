@@ -54,12 +54,12 @@ public class BoardController {
 		return "board/list";
 	}
 
-//	@RequestMapping(value = "/listCriteria", method = RequestMethod.GET)
-//	public String listCriteria(Model model, Criteria criteria) throws Exception {
-//		logger.info("listCriteria ...");
-//		model.addAttribute("boards", boardService.listCriteria(criteria));
-//		return "/board/list_criteria";
-//	}
+	@RequestMapping(value = "/listCriteria", method = RequestMethod.GET)
+	public String listCriteria(Model model, Criteria criteria) throws Exception {
+		logger.info("listCriteria ...");
+		model.addAttribute("boards", boardService.listCriteria(criteria));
+		return "/board/list_criteria";
+	}
 
 	// 조화 페이지
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
