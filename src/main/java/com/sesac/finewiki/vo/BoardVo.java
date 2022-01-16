@@ -15,6 +15,7 @@ public class BoardVo {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public BoardVo(int data_no, int board_no, int hit, String mem_nick, String title, String content, String regdate,
 			int reply_cnt, String memberImg, MemberVo membervo, String[] files, int fileCnt) {
 		super();
@@ -31,6 +32,22 @@ public class BoardVo {
 		this.files = files;
 		this.fileCnt = fileCnt;
 	}
+
+
+	public MemberVo getMembervo() {
+		return membervo;
+	}
+
+
+	public void setMembervo(MemberVo membervo) {
+		this.membervo = membervo;
+	}
+
+
+	public void setReply_cnt(int reply_cnt) {
+		this.reply_cnt = reply_cnt;
+	}
+
 
 	public int getData_no() {
 		return data_no;
@@ -92,9 +109,6 @@ public class BoardVo {
 		return reply_cnt;
 	}
 
-	public void setRepl_cnt(int reply_cnt) {
-		this.reply_cnt = reply_cnt;
-	}
 
 	public String getMemberImg() {
 		return memberImg;

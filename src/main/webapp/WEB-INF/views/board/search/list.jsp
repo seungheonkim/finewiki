@@ -75,7 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 												<td>${board.mem_nick}</td>
 												<td><fmt:formatDate value="${board.regdate}"
-														pattern="yyyy-MM-dd" /></td>
+														pattern="yyyy-MM-dd-hh-mm-ss" /></td>
 												<td><span class="badge bg-success">${board.hit}</span></td>
 											</tr>
 										</c:forEach>

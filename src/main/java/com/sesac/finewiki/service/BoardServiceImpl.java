@@ -17,9 +17,8 @@ import com.sesac.finewiki.vo.BoardVo;
 
 @Service
 public class BoardServiceImpl implements BoardService {
-	
-    private static final Logger logger = LoggerFactory.getLogger(BoardServiceImpl.class);
 
+	private static final Logger logger = LoggerFactory.getLogger(BoardServiceImpl.class);
 
 	private final BoardDAO boardDAO;
 	private BoardFileDAO boardFileDAO;
@@ -32,21 +31,7 @@ public class BoardServiceImpl implements BoardService {
 	@Transactional
 	@Override
 	public void create(BoardVo vo) throws Exception {
-		String[] files = vo.getFiles();
-
-		if (files == null) {
-
-			boardDAO.create(vo);
-			return;
-		}
-		vo.setFileCnt(files.length);
-
 		boardDAO.create(vo);
-		logger.info("Create - " + vo.toString());
-		Integer data_no = vo.getData_no();
-		for (String file_name : files) {
-			boardFileDAO.addAttach(file_name, data_no);
-		}
 	}
 
 	@Transactional(isolation = Isolation.READ_COMMITTED)
@@ -59,29 +44,12 @@ public class BoardServiceImpl implements BoardService {
 	@Transactional
 	@Override
 	public void update(BoardVo vo) throws Exception {
-	    	
-	        
-	        int data_no = vo.getData_no();
-	        boardFileDAO.deleteAllAttach(data_no);
-
-	        String[] files = vo.getFiles();
-	        if (files == null) {
-	        	vo.setFileCnt(0);
-	            boardDAO.update(vo);
-	            return;
-	        }
-
-	        vo.setFileCnt(files.length);
-	        boardDAO.update(vo);
-	        for (String file_name : files) {
-	        	boardFileDAO.replaceAttach(file_name, data_no);
-	        }
+		boardDAO.update(vo);
 	}
 
 	@Transactional
 	@Override
 	public void delete(Integer data_no) throws Exception {
-		boardFileDAO.deleteAllAttach(data_no);
 		boardDAO.delete(data_no);
 	}
 

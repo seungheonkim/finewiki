@@ -101,7 +101,7 @@
 	</select>
 	<!-- 수정 -->
 	<select id="listSearch" resultMap="BoardResultMap"> <![CDATA[ SELECT data_no, title, content, mem_nick, regdate, hit, reply_cnt FROM board_data WHERE data_no > 0 ]]>
-		<include refid="search" /> <![CDATA[ ORDER BY data_no DESC, reg_date DESC LIMIT #{pageStart}, #{perPageNum} ]]>
+		<include refid="search" /> <![CDATA[ ORDER BY data_no DESC, regdate DESC LIMIT #{pageStart}, #{perPageNum} ]]>
 	</select> <!-- 추가 -->
 	<update id="updateReplyCnt"> UPDATE board_data SET reply_cnt = reply_cnt +
 		#{amount} WHERE data_no = #{data_no}
@@ -149,7 +149,7 @@
 		<result property="mem_nick" column="mem_nick" /> 
 		<result property="regdate" column="regdate" /> 
 		<result property="hit" column="hit" /> 
-		<result property="replyCnt" column="reply_cnt" /> 
+		<result property="reply_cnt" column="reply_cnt" /> 
 		<result property="fileCnt" column="file_cnt" /> 
 		<result property="memberImg" column="memberImg" /> 
 		<association property="membervo" resultMap="MemberVoResultMap"/> <!-- 추가 --> 

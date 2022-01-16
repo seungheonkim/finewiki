@@ -52,7 +52,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								</div>
 								<div class="card-body">
 									<table class="table table-bordered">
-										<tbody>
+										<thead>
 											<tr>
 												<th style="width: 30px">#</th>
 												<th>제목</th>
@@ -60,6 +60,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 												<th style="width: 150px">작성시간</th>
 												<th style="width: 60px">조회</th>
 											</tr>
+											</thead>
+											<tbody>
 											<c:forEach items="${boards}" var="board">
 												<tr>
 													<td>${board.data_no}</td>
@@ -67,7 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 														href="${path}/board/read?data_no=${board.data_no}">${board.title}</a></td>
 													<td>${board.mem_nick}</td>
 													<td><fmt:formatDate value="${board.regdate}"
-															pattern="yyyy-MM-dd a HH:mm" /></td>
+															pattern="yyyy-MM-dd-hh-mm-ss" /></td>
 													<td><span class="badge bg-red">${board.hit}</span></td>
 												</tr>
 											</c:forEach>

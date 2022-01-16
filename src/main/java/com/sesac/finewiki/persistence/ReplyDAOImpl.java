@@ -61,7 +61,7 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	@Override
 	public List<ReplyVo> memberReplies(String mem_id) throws Exception {
-		return sqlSession.selectList(NAMESPACE + ".userReplies", mem_id);
+		return sqlSession.selectList(NAMESPACE + ".memberReplies", mem_id);
 	}
 
 }
