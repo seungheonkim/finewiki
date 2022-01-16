@@ -16,7 +16,7 @@
 				<form action="${path}/member/register" method="post">
 					<div class="input-group mb-3">
 						<input type="text" name="mem_id" class="form-control"
-							placeholder="아아디">
+							placeholder="아이디">
 						<div class="input-group-append">
 							<div class="input-group-text">
 								<span class="fas fa-exclamation"></span>

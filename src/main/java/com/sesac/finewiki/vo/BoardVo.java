@@ -1,18 +1,22 @@
 package com.sesac.finewiki.vo;
 
+import java.util.Arrays;
+
 public class BoardVo {
 	private int data_no, board_no, hit;
 	private String mem_nick, title, content, regdate;
-	private int replyCnt;
+	private int reply_cnt;
 	private String memberImg;
-	private MemberVo vo;
-	
+	private MemberVo membervo;
+	private String[] files;
+	private int fileCnt;
+
 	public BoardVo() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public BoardVo(int data_no, int board_no, int hit, String mem_nick, String title, String content, String regdate,
-			int replyCnt, String memberImg, MemberVo vo) {
+			int reply_cnt, String memberImg, MemberVo membervo, String[] files, int fileCnt) {
 		super();
 		this.data_no = data_no;
 		this.board_no = board_no;
@@ -21,9 +25,11 @@ public class BoardVo {
 		this.title = title;
 		this.content = content;
 		this.regdate = regdate;
-		this.replyCnt = replyCnt;
+		this.reply_cnt = reply_cnt;
 		this.memberImg = memberImg;
-		this.vo = vo;
+		this.membervo = membervo;
+		this.files = files;
+		this.fileCnt = fileCnt;
 	}
 
 	public int getData_no() {
@@ -82,12 +88,12 @@ public class BoardVo {
 		this.regdate = regdate;
 	}
 
-	public int getReplyCnt() {
-		return replyCnt;
+	public int getReply_cnt() {
+		return reply_cnt;
 	}
 
-	public void setReplyCnt(int replyCnt) {
-		this.replyCnt = replyCnt;
+	public void setRepl_cnt(int reply_cnt) {
+		this.reply_cnt = reply_cnt;
 	}
 
 	public String getMemberImg() {
@@ -99,18 +105,35 @@ public class BoardVo {
 	}
 
 	public MemberVo getMemberVo() {
-		return vo;
+		return membervo;
 	}
 
-	public void setMemberVo(MemberVo vo) {
-		this.vo = vo;
+	public void setMemberVo(MemberVo membervo) {
+		this.membervo = membervo;
+	}
+
+	public String[] getFiles() {
+		return files;
+	}
+
+	public void setFiles(String[] files) {
+		this.files = files;
+	}
+
+	public int getFileCnt() {
+		return fileCnt;
+	}
+
+	public void setFileCnt(int fileCnt) {
+		this.fileCnt = fileCnt;
 	}
 
 	@Override
 	public String toString() {
 		return "BoardVo [data_no=" + data_no + ", board_no=" + board_no + ", hit=" + hit + ", mem_nick=" + mem_nick
-				+ ", title=" + title + ", content=" + content + ", regdate=" + regdate + ", replyCnt=" + replyCnt
-				+ ", memberImg=" + memberImg + ", vo=" + vo + "]";
+				+ ", title=" + title + ", content=" + content + ", regdate=" + regdate + ", reply_cnt=" + reply_cnt
+				+ ", memberImg=" + memberImg + ", membervo=" + membervo + ", files=" + Arrays.toString(files) + ", fileCnt="
+				+ fileCnt + "]";
 	}
-	
+
 }

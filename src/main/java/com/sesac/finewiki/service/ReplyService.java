@@ -22,5 +22,8 @@ public interface ReplyService {
 	void removeReply(Integer reply_no)throws Exception;
 
 	void addReply(ReplyVo replyVo) throws Exception;
+	
+	// 회원이 작성한 댓글 목록
+	List<ReplyVo> memberReplies(String mem_id) throws Exception;
 
 }

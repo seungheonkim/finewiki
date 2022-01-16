@@ -59,4 +59,9 @@ public class ReplyDAOImpl implements ReplyDAO {
 		return sqlSession.selectOne(NAMESPACE + ".getData_no", reply_no);
 	}
 
+	@Override
+	public List<ReplyVo> memberReplies(String mem_id) throws Exception {
+		return sqlSession.selectList(NAMESPACE + ".userReplies", mem_id);
+	}
+
 }

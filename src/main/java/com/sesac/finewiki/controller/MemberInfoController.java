@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.sesac.finewiki.service.BoardService;
 import com.sesac.finewiki.service.MemberService;
 import com.sesac.finewiki.service.ReplyService;
+import com.sesac.finewiki.util.UploadFileUtils;
 import com.sesac.finewiki.vo.BoardVo;
 import com.sesac.finewiki.vo.MemberVo;
 import com.sesac.finewiki.vo.ReplyVo;
@@ -76,7 +77,7 @@ public class MemberInfoController {
 
 	// 회원정보 수정처리
 	@RequestMapping(value = "/modify/info", method = RequestMethod.POST)
-	public String userInfoModify(MemberVo vo, HttpSession session, RedirectAttributes redirectAttributes)
+	public String memberInfoModify(MemberVo vo, HttpSession session, RedirectAttributes redirectAttributes)
 			throws Exception {
 		logger.info(vo.toString());
 		MemberVo oldUserInfo = memberService.getMember(vo.getMem_id());

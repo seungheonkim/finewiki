@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sesac.finewiki.mappers.board.boardMapper">
-	<insert id="create">
+	<insert id="create" useGeneratedKeys="true" keyProperty="data_no">
 		INSERT INTO board_data (
 		data_no
 		, title
 		, content
-		,
-		mem_nick
+		, mem_nick
 		, regdate
 		, hit
+		, fileCnt
 		) VALUES (
 		#{data_no}
 		, #{title}
 		, #{content}
-		,
-		#{mem_nick}
+		, #{mem_nick}
 		, #{regdate}
 		, #{hit}
+		, #{fileCnt}
 		)
 	</insert>
 
@@ -152,7 +152,7 @@
 		<result property="replyCnt" column="reply_cnt" /> 
 		<result property="fileCnt" column="file_cnt" /> 
 		<result property="memberImg" column="memberImg" /> 
-		<association property="vo" resultMap="MemberVoResultMap"/> <!-- 추가 --> 
+		<association property="membervo" resultMap="MemberVoResultMap"/> <!-- 추가 --> 
 	</resultMap>
 	<resultMap id="MemberVoResultMap" type="MemberVo"> 
 		<id property="mem_id" column="mem_id"/> 

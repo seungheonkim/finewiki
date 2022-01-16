@@ -70,5 +70,10 @@ public class ReplyServiceImpl implements ReplyService {
 		return replyDAO.countReplies(data_no);
 	}
 
+	@Override
+	public List<ReplyVo> memberReplies(String mem_id) throws Exception {
+		return replyDAO.memberReplies(mem_id);
+	}
+
 
 }
