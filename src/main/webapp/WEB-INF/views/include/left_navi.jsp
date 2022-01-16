@@ -1,7 +1,9 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<aside class="main-sidebar sidebar-light-primary elevation-4" style="background:#8cbaff">
 	<!-- Brand Logo -->
-	<a href="index3.html" class="brand-link"> <img
-		src="${path}/dist/img/AdminLTELogo.png" alt="Finewiki Logo"
+	<a href="/finewiki" class="brand-link"> <img
+		src="${path}/dist/img/finewiki.png" alt="Finewiki Logo"
 		class="brand-image img-circle elevation-3" style="opacity: .8">
 		<span class="brand-text font-weight-light">Finewiki</span>
 	</a>
@@ -11,7 +13,7 @@
 		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 			<c:if test="${empty login}">
 				<div class="image">
-					<img src="${path}/dist/img/default-user-image.jpg"
+					<img src="${path}/dist/img/profile.png"
 						class="img-circle elevation-2" alt="User Image">
 				</div>
 				<div class="info">
@@ -21,7 +23,7 @@
 			</c:if>
 			<c:if test="${not empty login}">
 				<div class="image">
-					<img src="${path}/dist/img/default-user-image.jpg"
+					<img src="${path}/dist/img/profile.png"
 						class="img-circle elevation-2" alt="User Image">
 				</div>
 				<div class="info">
@@ -37,65 +39,29 @@
 				data-widget="treeview" role="menu" data-accordion="false">
 				<!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
 				<li class="nav-item has-treeview menu-open"><a href="#"
-					class="nav-link"> <i class="nav-icon fas fa-tachometer-alt"></i>
+					class="nav-link"><img src="${path}/dist/img/updateLogo.png"
+						class="img" alt="User Image">
 						<p>
-							CRUD Board <i class="right fas fa-angle-left"></i>
+							&nbsp;&nbsp;&nbsp;&nbsp;게시판 홈<i class="right fas fa-angle-left"></i>
 						</p>
 				</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="${path}/board/write"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								<p>Write Page</p>
+						<li class="nav-item"><a href="${path}/board/list"
+							class="nav-link"> <img src="${path}/dist/img/주식대쉬보드.png"
+						class="img" alt="User Image">
+								<p style="color:black">&nbsp;&nbsp;&nbsp;주식 게시판</p>
 						</a></li>
 						<li class="nav-item"><a href="${path}/board/list"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								<p>List Page</p>
+							class="nav-link"><img src="${path}/dist/img/부동산대쉬보드.png"
+						class="img" alt="User Image">
+								<p style="color:black">&nbsp;&nbsp;&nbsp;부동산 게시판</p>
+						</a></li>
+						<li class="nav-item"><a href="${path}/board/list"
+							class="nav-link"> <img src="${path}/dist/img/원자재 등등.png"
+						class="img" alt="User Image">
+								<p style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;자유 게시판</p>
 						</a></li>
 					</ul></li>
-				<li class="nav-item has-treeview menu-open"><a href="#"
-					class="nav-link"> <i class="nav-icon fas fa-tachometer-alt"></i>
-						<p>
-							Paging CRUD Board <i class="right fas fa-angle-left"></i>
-						</p>
-				</a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="${path}/board/paging/write"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								<p>Write Page</p>
-						</a></li>
-						<!-- list pagin 목록버튼 추가  -->
-						<li class="nav-item"><a href="${path}/board/paging/list"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								<p>List paging Page</p>
-						</a></li>
-						<li class="nav-item has-treeview menu-open"><a href="#"
-							class="nav-link"> <i class="nav-icon fas fa-tachometer-alt"></i>
-								<p>
-									Paging Search Board <i class="right fas fa-angle-left"></i>
-								</p>
-						</a>
-							<ul class="nav nav-treeview">
-								<li class="nav-item"><a
-									href="${path}/board/paging/search/write" class="nav-link">
-										<i class="far fa-circle nav-icon"></i>
-										<p>Write Page</p>
-								</a></li>
-								<!-- List Paging 목록 버튼 추가 -->
-								<li class="nav-item"><a
-									href="${path}/board/paging/search/list" class="nav-link"> <i
-										class="far fa-circle nav-icon"></i>
-										<p>List Paging Search Page</p>
-								</a></li>
-							</ul></li>
-
-						<!-- ------------------------- -->
-					</ul></li>
-				<li class="nav-item"><a href="#" class="nav-link"> <i
-						class="nav-icon fas fa-th"></i>
-						<p>
-							Simple Link <span class="right badge badge-danger">New</span>
-						</p>
-				</a></li>
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->

@@ -24,7 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0">Starter Page</h1>
+						<h1 class="m-0">금융 자산의 모든 것</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
@@ -52,14 +52,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								</div>
 								<div class="card-body" style="height: 700px">
 									${board.content}</div>
-								<div class="card-body">
-									<c:if test="${empty login}">
-										<a href="${path}/member/login"
-											class="btn btn-default btn-block" role="button"> <i
-											class="fa fa-edit"></i> 로그인 한 사용자만 댓글 등록이 가능합니다.
-										</a>
-									</c:if>
+								<div class="card card-primary card-outline">
+									<%--댓글 유무 / 댓글 갯수 / 댓글 펼치기, 접기--%>
+									<div class="card-header">
+										<a href="" class="link-black text-lg"><i
+											class="fas fa-comments margin-r-5 replyCount"></i></a>
+										<div class="card-tools">
+											<button type="button" class="btn primary"
+												data-widget="collapse">
+												<i class="fa fa-plus"></i>
+											</button>
+										</div>
+									</div>
+									<%--댓글 목록--%>
+									<div class="card-body repliesDiv"></div>
+									<%--댓글 페이징--%>
+									<div class="card-footer">
+										<nav aria-label="Contacts Page Navigation">
+											<ul
+												class="pagination pagination-sm no-margin justify-content-center m-0">
+											</ul>
+										</nav>
+									</div>
 								</div>
+									
+
 								<div class="card-footer">
 									<div class="user-block">
 										<img class="img-circle img-bordered-sm"
@@ -68,8 +85,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										</span> <span class="description"><fmt:formatDate
 												pattern="yyyy-MM-dd" value="${board.regdate}" /></span>
 									</div>
+								</div>
+								<div class="card-footer">
 									<form role="form" method="post">
 										<input type="hidden" name="data_no" value="${board.data_no}">
+										<input type="hidden" name="page" value="${searchCriteria.page}">
+										<input type="hidden" name="perPageNum"
+											value="${searchCriteria.perPageNum}"> <input
+											type="hidden" name="searchType"
+											value="${searchCriteria.searchType}"> <input
+											type="hidden" name="keyword"
+											value="${searchCriteria.keyword}">
 									</form>
 									<button type="submit" class="btn btn-primary listBtn">
 										<i class="fa fa-list"></i> 목록
@@ -84,27 +110,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									</div>
 								</div>
 								<div class="card-body">
-									<form class="form-horizontal">
-										<div class="row">
-											<div class="form-group col-sm-10">
-												<input class="form-control input-sm" id="newReplyText"
-													type="text" placeholder="댓글 입력...">
-											</div>
-											<div class="form-group col-sm-2" hidden="hidden">
+									<c:if test="${not empty login}">
+										<form class="form-horizontal">
+											<div class="row">
+												<div class="form-group col-sm-10">
+													<input class="form-control input-sm" id="newReplyText"
+														type="text" placeholder="댓글 입력...">
+												</div>
+												<div class="form-group col-sm-2" hidden="hidden">
 													<input class="form-control input-sm" id="newReplyWriter"
 														type="text" value="${login.mem_id}" readonly>
 												</div>
-											<div class="form-group col-sm-2">
-												<button type="button"
-													class="btn btn-primary btn-sm btn-block replyAddBtn">
-													<i class="fa fa-save"></i> 저장
-												</button>
+												<div class="form-group col-sm-2">
+													<button type="button"
+														class="btn btn-primary btn-sm btn-block replyAddBtn">
+														<i class="fa fa-save"></i> 저장
+													</button>
+												</div>
 											</div>
-										</div>
-									</form>
-								</div>
-
-								
+										</form>
+									</c:if>
+									<c:if test="${empty login}">
+										<a href="${path}/member/login"
+											class="btn btn-default btn-block" role="button"> <i
+											class="fa fa-edit"></i> 로그인 한 사용자만 댓글 등록이 가능합니다.
+										</a>
+									</c:if>
 								</div>
 							</div>
 						</div>
@@ -137,48 +168,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<%@ include file="../include/plugin_js.jsp"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
-
 			var formObj = $("form[role='form']");
 			console.log(formObj);
-
 			$(".modBtn").on("click", function() {
 				formObj.attr("action", "${path}/board/modify");
 				formObj.attr("method", "get");
 				formObj.submit();
 			});
-
 			$(".delBtn").on("click", function() {
 				formObj.attr("action", "${path}/board/remove");
 				formObj.submit();
 			});
-
 			$(".listBtn").on("click", function() {
-				self.location = "${path}/board/list"
-			});
-
-		});
-	</script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			var formObj = $("form[role='form']");
-			console.log(formObj);
-			$(".modBtn").on("click", function() {
-				formObj.attr("action", "${path}/board/paging/search/modify");
-				formObj.attr("method", "get");
-				formObj.submit();
-			});
-			$(".delBtn").on("click", function() {
-				formObj.attr("action", "${path}/board/paging/search/remove");
-				formObj.submit();
-			});
-			$(".listBtn").on("click", function() {
-				formObj.attr("action", "${path}/board/paging/search/list");
+				formObj.attr("action", "${path}/board/list");
 				formObj.attr("method", "get");
 				formObj.submit();
 			});
 		});
 	</script>
-	<script id="replyTemplate" type="text/x-handlebars-template">
+<script id="replyTemplate" type="text/x-handlebars-template">
  {{#each.}}
  <div class="post replyDiv" data-reply_no={{reply_no}}> 
 <div class="user-block"> 
@@ -201,8 +209,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
  </div>
  {{/each}}
  </script>
-
-
 	<script type="text/javascript">
 		$(document)
 				.ready(
@@ -215,7 +221,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											function() {
 												formObj
 														.attr("action",
-																"${path}/board/paging/search/modify");
+																"${path}/board/modify");
 												formObj.attr("method", "get");
 												formObj.submit();
 											});
@@ -225,7 +231,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											function() {
 												formObj
 														.attr("action",
-																"${path}/board/paging/search/remove");
+																"${path}/board/remove");
 												formObj.submit();
 											});
 							$(".listBtn")
@@ -234,7 +240,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											function() {
 												formObj
 														.attr("action",
-																"${path}/board/paging/search/list");
+																"${path}/board/list");
 												formObj.attr("method", "get");
 												formObj.submit();
 											});
@@ -250,17 +256,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								text = text.replace(/( )/gm, "&nbsp;");
 								return new Handlebars.SafeString(text);
 							});
-							Handlebars
-									.registerHelper(
-											"eqReplyWriter",
-											function(reply_writer, block) {
-												var accum = "";
-												if (reply_writer === "${login.mem_id}") {
-													accum += block.fn();
-												}
-												return accum;
-											});
-
 							// 댓글 등록일자 : 날짜/시간 2자리로 맞추기
 							Handlebars.registerHelper("prettifyDate", function(
 									timeValue) {
@@ -278,6 +273,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										: minutes;
 								return year + "-" + month + "-" + date;
 							});
+							Handlebars
+							.registerHelper(
+									"eqReplyWriter",
+									function(reply_writer, block) {
+										var accum = "";
+										if (reply_writer === "${login.mem_id}") {
+											accum += block.fn();
+										}
+										return accum;
+									});
 							// 댓글 목록 함수 호출
 							getReplies("${path}/replies/" + data_no + "/"
 									+ replyPageNum);
@@ -494,6 +499,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											});
 						});
 	</script>
-	
 </body>
 </html>

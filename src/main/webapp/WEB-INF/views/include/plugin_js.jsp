@@ -1,3 +1,4 @@
+
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
 <script src="${path}/plugins/jquery/jquery.min.js"></script>

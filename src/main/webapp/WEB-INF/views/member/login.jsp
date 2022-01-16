@@ -5,13 +5,13 @@
 <%@ include file="../include/head.jsp"%>
 
 <body class="hold-transition login-page">
-	<div>test</div>
+	<div>
 	<div class="login-box">
 		<div class="login-logo">
 			<a href="${path}/"><b>Finewiki</b></a>
 		</div>
 		<!-- /.login-logo -->
-		<div class="card">
+		<div class="card ">
 			<div class="card-body login-card-body">
 				<p class="login-box-msg">금융 자산 분석을 보고 싶으시다면 로그인을!!</p>
 
@@ -59,6 +59,7 @@
 			<!-- /.login-card-body -->
 		</div>
 		<!-- /.login-box-body -->
+	</div>
 	</div>
 	<!-- /.login-box -->
 
