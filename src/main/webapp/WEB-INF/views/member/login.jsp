@@ -49,9 +49,6 @@
 					</div>
 				</form>
 
-				<p class="mb-1">
-					<a href="#">비밀번호 찾기</a>
-				</p>
 				<p class="mb-0">
 					<a href="${path}/member/register" class="text-center">회원가입</a>
 				</p>
