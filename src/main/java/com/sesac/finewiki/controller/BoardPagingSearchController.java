@@ -48,8 +48,8 @@ public class BoardPagingSearchController {
 		pageMaker.setCriteria(searchCriteria);
 		pageMaker.setTotalCount(boardService.countBoards(searchCriteria));
 		pageMaker.setTotalCount(boardService.countSearchedBoards(searchCriteria));
-		model.addAttribute("articles", boardService.listCriteria(searchCriteria));
-		model.addAttribute("articles", boardService.listSearch(searchCriteria));
+		model.addAttribute("boards", boardService.listCriteria(searchCriteria));
+		model.addAttribute("boards", boardService.listSearch(searchCriteria));
 		model.addAttribute("pageMaker", pageMaker);
 		return "board/search/list";
 	}
@@ -60,7 +60,7 @@ public class BoardPagingSearchController {
 	public String read(@RequestParam("data_no") int data_no,
 			@ModelAttribute("searchCriteria") SearchCriteria searchCriteria, Model model) throws Exception {
 		logger.info("search read() called...");
-		model.addAttribute("article", boardService.read(data_no));
+		model.addAttribute("board", boardService.read(data_no));
 		return "board/search/read";
 	}
 

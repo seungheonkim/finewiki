@@ -53,26 +53,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								<div class="card-body" style="height: 700px">
 									${board.content}</div>
 								<div class="card-body">
-									<c:if test="${not empty login}">
-										<form class="form-horizontal">
-											<div class="row">
-												<div class="form-group col-sm-8">
-													<input class="form-control input-sm" id="newReplyText"
-														type="text" placeholder="댓글 입력...">
-												</div>
-												<div class="form-group col-sm-2" hidden="hidden">
-													<input class="form-control input-sm" id="newReplyWriter"
-														type="text" value="${login.mem_id}" readonly>
-												</div>
-												<div class="form-group col-sm-2">
-													<button type="button"
-														class="btn btn-primary btn-sm btn-block replyAddBtn">
-														<i class="fa fa-save"></i> 저장
-													</button>
-												</div>
-											</div>
-										</form>
-									</c:if>
 									<c:if test="${empty login}">
 										<a href="${path}/member/login"
 											class="btn btn-default btn-block" role="button"> <i
@@ -88,29 +68,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										</span> <span class="description"><fmt:formatDate
 												pattern="yyyy-MM-dd" value="${board.regdate}" /></span>
 									</div>
-								</div>
-								<div class="card-body">
-									<form class="form-horizontal">
-										<div class="row">
-											<div class="form-group col-sm-8">
-												<input class="form-control input-sm" id="newReplyText"
-													type="text" placeholder="댓글 입력...">
-											</div>
-											<div class="form-group col-sm-2">
-												<input class="form-control input-sm" id="newReplyWriter"
-													type="text" placeholder="작성자">
-											</div>
-											<div class="form-group col-sm-2">
-												<button type="button"
-													class="btn btn-primary btn-sm btn-block replyAddBtn">
-													<i class="fa fa-save"></i> 저장
-												</button>
-											</div>
-										</div>
-									</form>
-								</div>
-
-								<div class="card-footer">
 									<form role="form" method="post">
 										<input type="hidden" name="data_no" value="${board.data_no}">
 									</form>
@@ -125,6 +82,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											<i class="fa fa-trash"></i> 삭제
 										</button>
 									</div>
+								</div>
+								<div class="card-body">
+									<form class="form-horizontal">
+										<div class="row">
+											<div class="form-group col-sm-10">
+												<input class="form-control input-sm" id="newReplyText"
+													type="text" placeholder="댓글 입력...">
+											</div>
+											<div class="form-group col-sm-2" hidden="hidden">
+													<input class="form-control input-sm" id="newReplyWriter"
+														type="text" value="${login.mem_id}" readonly>
+												</div>
+											<div class="form-group col-sm-2">
+												<button type="button"
+													class="btn btn-primary btn-sm btn-block replyAddBtn">
+													<i class="fa fa-save"></i> 저장
+												</button>
+											</div>
+										</div>
+									</form>
+								</div>
+
+								
 								</div>
 							</div>
 						</div>

@@ -52,34 +52,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								</div>
 								<div class="card-body" style="height: 700px">
 									${board.content}</div>
-								<div class="card-body">
-									<c:if test="${not empty login}">
-										<form class="form-horizontal">
-											<div class="row">
-												<div class="form-group col-sm-8">
-													<input class="form-control input-sm" id="newReplyText"
-														type="text" placeholder="댓글 입력...">
-												</div>
-												<div class="form-group col-sm-2" hidden="hidden">
-													<input class="form-control input-sm" id="newReplyWriter"
-														type="text" value="${login.mem_id}" readonly>
-												</div>
-												<div class="form-group col-sm-2">
-													<button type="button"
-														class="btn btn-primary btn-sm btn-block replyAddBtn">
-														<i class="fa fa-save"></i> 저장
-													</button>
-												</div>
-											</div>
-										</form>
-									</c:if>
-									<c:if test="${empty login}">
-										<a href="${path}/member/login"
-											class="btn btn-default btn-block" role="button"> <i
-											class="fa fa-edit"></i> 로그인 한 사용자만 댓글 등록이 가능합니다.
-										</a>
-									</c:if>
-								</div>
 								<div class="card card-primary card-outline">
 									<%--댓글 유무 / 댓글 갯수 / 댓글 펼치기, 접기--%>
 									<div class="card-header">
@@ -110,7 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											src="${path}/dist/img/user1-128x128.jpg" alt="user image">
 										<span class="username"> <a href="#">${board.mem_nick}</a>
 										</span> <span class="description"><fmt:formatDate
-												pattern="yyyy-MM-dd" value="${board.regdate}" /></span>
+												pattern="yyyy-MM-dd-hh-mm-ss" value="${board.regdate}" /></span>
 									</div>
 								</div>
 								<div class="card-footer">
@@ -123,7 +95,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<button type="submit" class="btn btn-primary listBtn">
 										<i class="fa fa-list"></i> 목록
 									</button>
-									<div class="pull-right">
+									<div class="float-right">
 										<button type="submit" class="btn btn-warning modBtn">
 											<i class="fa fa-edit"></i> 수정
 										</button>
@@ -132,7 +104,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										</button>
 									</div>
 								</div>
-
+								<div class="card-body">
+									<c:if test="${not empty login}">
+										<form class="form-horizontal">
+											<div class="row">
+												<div class="form-group col-sm-10">
+													<input class="form-control input-sm" id="newReplyText"
+														type="text" placeholder="댓글 입력...">
+												</div>
+												<div class="form-group col-sm-2" hidden="hidden">
+													<input class="form-control input-sm" id="newReplyWriter"
+														type="text" value="${login.mem_id}" readonly>
+												</div>
+												<div class="form-group col-sm-2">
+													<button type="button"
+														class="btn btn-primary btn-sm btn-block replyAddBtn">
+														<i class="fa fa-save"></i> 저장
+													</button>
+												</div>
+											</div>
+										</form>
+									</c:if>
+									<c:if test="${empty login}">
+										<a href="${path}/member/login"
+											class="btn btn-default btn-block" role="button"> <i
+											class="fa fa-edit"></i> 로그인 한 사용자만 댓글 등록이 가능합니다.
+										</a>
+									</c:if>
+								</div>
 							</div>
 						</div>
 						<!-- /.col-md-6 -->
@@ -202,7 +201,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			});
 		});
 	</script>
-<script id="replyTemplate" type="text/x-handlebars-template">
+	<script id="replyTemplate" type="text/x-handlebars-template">
  {{#each.}}
  <div class="post replyDiv" data-reply_no={{reply_no}}> 
 <div class="user-block"> 

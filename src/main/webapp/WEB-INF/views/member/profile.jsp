@@ -119,7 +119,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 														</tr>
 													</thead>
 													<tbody>
-														<c:forEach var="BoardVo" varStatus="i"
+														<c:forEach var="boardVo" varStatus="i"
 															items="${memberBoardList}">
 															<tr>
 																<td>${i.index + 1}</td>
@@ -211,10 +211,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			<!-- /.control-sidebar -->
 
 			<!-- Main Footer -->
-			<%@ include file="../include/footer.jsp"%>
+
 		</div>
 		<!-- ./wrapper -->
-
+		<%@ include file="../include/footer.jsp"%>
 		<!-- REQUIRED SCRIPTS -->
 		<%@ include file="../include/plugin_js.jsp"%>
 		<script type="text/javascript">

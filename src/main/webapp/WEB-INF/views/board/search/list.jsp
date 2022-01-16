@@ -73,7 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 												<td><a
 													href="${path}/board/paging/search/read${pageMaker.makeSearch(pageMaker.criteria.page)}&data_no=${board.data_no}">
 														${board.title} </a></td>
-
+												<td>${board.reply_cnt}</td>
 												<td>${board.mem_nick}</td>
 												<td><fmt:formatDate value="${board.regdate}"
 														pattern="yyyy-MM-dd-hh-mm-ss" /></td>

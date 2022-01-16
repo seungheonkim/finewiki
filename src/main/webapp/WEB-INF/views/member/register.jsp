@@ -6,12 +6,12 @@
 <body class="hold-transition register-page">
 	<div class="register-box">
 		<div class="register-logo">
-			<a href="${path}/"><b>Admin</b>LTE</a>
+				<a href="${path}/"><b>Finewiki</b></a>
 		</div>
 
 		<div class="card">
 			<div class="card-body register-card-body">
-				<p class="login-box-msg">Register a new membership</p>
+				<p class="login-box-msg">회원 가입!!</p>
 
 				<form action="${path}/member/register" method="post">
 					<div class="input-group mb-3">
@@ -80,21 +80,19 @@
 						<div class="col-8">
 							<div class="icheck-primary">
 								<input type="checkbox" id="agreeTerms" name="terms"
-									value="agree"> <label for="agreeTerms"> I agree
-									to the <a href="#">terms</a>
+									value="agree"> <label for="agreeTerms"> 동의 하기
 								</label>
 							</div>
 						</div>
 						<!-- /.col -->
 						<div class="col-4">
-							<button type="submit" class="btn btn-primary btn-block">Register</button>
+							<button type="submit" class="btn btn-primary btn-block">가입</button>
 						</div>
 						<!-- /.col -->
 					</div>
 				</form>
 
-				<a href="${path}/member/login" class="text-center">I already have
-					a membership</a>
+				<a href="${path}/member/login" class="text-center">이미 회원일 경우</a>
 			</div>
 			<!-- /.form-box -->
 		</div>
