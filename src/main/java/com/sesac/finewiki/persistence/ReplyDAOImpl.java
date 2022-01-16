@@ -13,7 +13,7 @@ import com.sesac.finewiki.vo.ReplyVo;
 
 @Repository
 public class ReplyDAOImpl implements ReplyDAO {
-	private static String NAMESPACE = "com.cameldev.mypage.mappers.reply.ReplyMapper";
+	private static String NAMESPACE = "com.sesac.finewiki.mappers.reply.replyMapper";
 	private final SqlSession sqlSession;
 
 	@Inject

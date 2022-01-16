@@ -60,13 +60,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 												<th style="width: 150px">작성시간</th>
 												<th style="width: 60px">조회</th>
 											</tr>
-											<c:forEach items="${board}" var="board">
+											<c:forEach items="${boards}" var="board">
 												<tr>
 													<td>${board.data_no}</td>
 													<td><a
 														href="${path}/board/read?data_no=${board.data_no}">${board.title}</a></td>
 													<td>${board.mem_nick}</td>
-													<td><fmt:formatDate value="${board.regDate}"
+													<td><fmt:formatDate value="${board.regdate}"
 															pattern="yyyy-MM-dd a HH:mm" /></td>
 													<td><span class="badge bg-red">${board.hit}</span></td>
 												</tr>
