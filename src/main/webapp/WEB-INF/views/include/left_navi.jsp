@@ -46,18 +46,18 @@
 						</p>
 				</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="${path}/board/list"
-							class="nav-link"> <img src="${path}/dist/img/주식대쉬보드.png"
+						<li class="nav-item"><a href="${path}/board/stock/list"
+							class="nav-link"> <img src="${path}/dist/img/stock.png"
 						class="img" alt="User Image">
 								<p style="color:black">&nbsp;&nbsp;&nbsp;주식 게시판</p>
 						</a></li>
-						<li class="nav-item"><a href="${path}/board/list"
-							class="nav-link"><img src="${path}/dist/img/부동산대쉬보드.png"
+						<li class="nav-item"><a href="${path}/board/estate/list"
+							class="nav-link"><img src="${path}/dist/img/estate.png"
 						class="img" alt="User Image">
 								<p style="color:black">&nbsp;&nbsp;&nbsp;부동산 게시판</p>
 						</a></li>
-						<li class="nav-item"><a href="${path}/board/list"
-							class="nav-link"> <img src="${path}/dist/img/원자재 등등.png"
+						<li class="nav-item"><a href="${path}/board/free/list"
+							class="nav-link"> <img src="${path}/dist/img/free.png"
 						class="img" alt="User Image">
 								<p style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;자유 게시판</p>
 						</a></li>

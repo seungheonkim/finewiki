@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sesac.finewiki.mappers.board.boardMapper">
+<mapper namespace="com.sesac.finewiki.mappers.board.free.freeMapper">
 	<insert id="create" useGeneratedKeys="true" keyProperty="data_no">
-		INSERT INTO board_data (
+		INSERT INTO free_board_data (
 		data_no
 		, title
 		, content
@@ -21,7 +21,7 @@
 		)
 	</insert>
 
-	<select id="read" resultMap="BoardResultMap">
+	<select id="read" resultMap="FreeResultMap">
 		SELECT
 		data_no
 		, title
@@ -31,12 +31,12 @@
 		, regdate
 		, hit
 		FROM
-		board_data
+		free_board_data
 		WHERE data_no = #{data_no}
 	</select>
 
 	<update id="update">
-		UPDATE board_data
+		UPDATE free_board_data
 		SET
 		title = #{title}
 		, content =
@@ -46,11 +46,11 @@
 	</update>
 
 	<delete id="delete">
-		DELETE FROM board_data
+		DELETE FROM free_board_data
 		WHERE data_no = #{data_no}
 	</delete>
 
-	<select id="listAll" resultType="BoardVo">
+	<select id="listAll" resultType="FreeVo">
         <![CDATA[
         SELECT
             data_no,
@@ -59,13 +59,13 @@
             mem_nick,
             regdate,
             hit
-        FROM board_data
+        FROM free_board_data
         WHERE data_no > 0
         ORDER BY data_no DESC, regdate DESC
         ]]>
 	</select>
 
-	<select id="listPaging" resultMap="BoardResultMap"> 
+	<select id="listPaging" resultMap="FreeResultMap"> 
     <![CDATA[ 
     SELECT 
     	data_no, 
@@ -74,14 +74,14 @@
     	mem_nick, 
     	regdate, 
     	hit 
-    	FROM board_data 
+    	FROM free_board_data 
     	WHERE data_no > 0 
     	ORDER BY data_no DESC, 
     	regdate DESC LIMIT #{page}, 10 
     	]]>
 	</select>
 
-	<select id="listCriteria" resultMap="BoardResultMap"> 
+	<select id="listCriteria" resultMap="FreeResultMap"> 
 	    <![CDATA[ 
 	    SELECT 
 		    data_no, 
@@ -90,23 +90,23 @@
 		    mem_nick, 
 		    regdate, 
 		    hit 
-	    FROM board_data 
+	    FROM free_board_data 
 	    WHERE data_no > 0 
 	    ORDER BY data_no DESC, regdate DESC 
 	    LIMIT #{pageStart}, #{perPageNum} 
 	    ]]>
 	</select>
 	
-	<select id="countBoards" resultType="int">
+	<select id="countFrees" resultType="int">
 	 <![CDATA[ 
 	 SELECT COUNT(data_no) 
-	 FROM board_data 
+	 FROM free_board_data 
 	 WHERE data_no > 0 
 	 ]]>
 	</select>
 	
 	<!-- 수정 -->
-	<select id="listSearch" resultMap="BoardResultMap"> 
+	<select id="listSearch" resultMap="FreeResultMap"> 
 	<![CDATA[ 
 	SELECT data_no, 
 			title, 
@@ -115,7 +115,7 @@
 			regdate, 
 			hit, 
 			reply_cnt 
-			FROM board_data 
+			FROM free_board_data 
 			WHERE data_no > 0 
 			]]>
 		<include refid="search" /> 
@@ -127,16 +127,16 @@
 	</select> <!-- 추가 -->
 	
 	<update id="updateReplyCnt"> 
-	UPDATE board_data 
+	UPDATE free_board_data 
 	SET reply_cnt = reply_cnt +
 		#{amount} 
 		WHERE data_no = #{data_no}
 	</update> <!-- 수정 -->
 
-	<select id="countSearchedBoards" resultType="int"> 
+	<select id="countSearchedFrees" resultType="int"> 
 	<![CDATA[ 
 		SELECT COUNT(data_no) 
-		FROM board_data 
+		FROM free_board_data 
 		WHERE data_no > 0 
 		]]>
 		<include refid="search" />
@@ -158,7 +158,7 @@
 	</sql>
 	
 	<update id="updateHit"> 
-		UPDATE board_data 
+		UPDATE free_board_data 
 		SET hit = hit + 1 
 		WHERE
 		data_no = #{data_no} 
@@ -166,21 +166,21 @@
 	
 <!--회원 프로필 이미지 변경--> 
 	<update id="updateMemberImg" > 
-	UPDATE board_data 
+	UPDATE free_board_data
 	SET 
 	memberImg = (SELECT mem_img FROM my_member WHERE mem_id = #{mem_nick}) 
 	WHERE data_no = #{data_no} 
 	</update> 
 	
-	<select id="memberBoardList" resultType="BoardVo"> 
+	<select id="memberFreeList" resultType="FreeVo"> 
 	SELECT 
 	* 
-	FROM board_data 
+	FROM free_board_data 
 	WHERE mem_nick = #{mem_id} 
 	ORDER BY data_no DESC, regdate DESC 
 	</select>
 	
-	<resultMap id="BoardResultMap" type="BoardVo"> 
+	<resultMap id="FreeResultMap" type="FreeVo"> 
 		<id property="data_no" column="data_no"/> 
 		<result property="title" column="title" /> 
 		<result property="content" column="content" /> 

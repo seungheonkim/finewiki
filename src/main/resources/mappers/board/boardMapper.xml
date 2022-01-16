@@ -96,20 +96,52 @@
 	    LIMIT #{pageStart}, #{perPageNum} 
 	    ]]>
 	</select>
+	
 	<select id="countBoards" resultType="int">
-	 <![CDATA[ SELECT COUNT(data_no) FROM board_data WHERE data_no > 0 ]]>
+	 <![CDATA[ 
+	 SELECT COUNT(data_no) 
+	 FROM board_data 
+	 WHERE data_no > 0 
+	 ]]>
 	</select>
+	
 	<!-- 수정 -->
-	<select id="listSearch" resultMap="BoardResultMap"> <![CDATA[ SELECT data_no, title, content, mem_nick, regdate, hit, reply_cnt FROM board_data WHERE data_no > 0 ]]>
-		<include refid="search" /> <![CDATA[ ORDER BY data_no DESC, regdate DESC LIMIT #{pageStart}, #{perPageNum} ]]>
+	<select id="listSearch" resultMap="BoardResultMap"> 
+	<![CDATA[ 
+	SELECT data_no, 
+			title, 
+			content, 
+			mem_nick, 
+			regdate, 
+			hit, 
+			reply_cnt 
+			FROM board_data 
+			WHERE data_no > 0 
+			]]>
+		<include refid="search" /> 
+		<![CDATA[ 
+		ORDER BY data_no DESC, 
+		regdate DESC 
+		LIMIT #{pageStart}, #{perPageNum} 
+		]]>
 	</select> <!-- 추가 -->
-	<update id="updateReplyCnt"> UPDATE board_data SET reply_cnt = reply_cnt +
-		#{amount} WHERE data_no = #{data_no}
+	
+	<update id="updateReplyCnt"> 
+	UPDATE board_data 
+	SET reply_cnt = reply_cnt +
+		#{amount} 
+		WHERE data_no = #{data_no}
 	</update> <!-- 수정 -->
 
-	<select id="countSearchedBoards" resultType="int"> <![CDATA[ SELECT COUNT(data_no) FROM board_data WHERE data_no > 0 ]]>
+	<select id="countSearchedBoards" resultType="int"> 
+	<![CDATA[ 
+		SELECT COUNT(data_no) 
+		FROM board_data 
+		WHERE data_no > 0 
+		]]>
 		<include refid="search" />
 	</select>
+	
 	<sql id="search">
 		<if test="searchType != null">
 			<if test="searchType == 't'.toString()"> AND title LIKE CONCAT('%', #{keyword}, '%') </if>
@@ -124,8 +156,14 @@
 				#{keyword}, '%') ) </if>
 		</if>
 	</sql>
-	<update id="updateHit"> UPDATE board_data SET hit = hit + 1 WHERE
-		data_no = #{data_no} </update>
+	
+	<update id="updateHit"> 
+		UPDATE board_data 
+		SET hit = hit + 1 
+		WHERE
+		data_no = #{data_no} 
+	</update>
+	
 <!--회원 프로필 이미지 변경--> 
 	<update id="updateMemberImg" > 
 	UPDATE board_data 

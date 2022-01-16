@@ -101,6 +101,45 @@
 		<association property="membervo" resultMap="MemberVoResultMap"/>
 	</resultMap>
 	
+	<resultMap id="EstateResultMap" type="EstateVo"> 
+		<id property="data_no" column="data_no"/> 
+		<result property="title" column="title" /> 
+		<result property="content" column="content" /> 
+		<result property="mem_nick" column="mem_nick" /> 
+		<result property="regdate" column="regdate" /> 
+		<result property="hit" column="hit" /> 
+		<result property="reply_cnt" column="reply_cnt" /> 
+		<result property="fileCnt" column="file_cnt" /> 
+		<result property="memberImg" column="memberImg" /> 
+		<association property="membervo" resultMap="MemberVoResultMap"/> <!-- 추가 --> 
+	</resultMap>
+	
+	<resultMap id="FreeResultMap" type="FreeVo"> 
+		<id property="data_no" column="data_no"/> 
+		<result property="title" column="title" /> 
+		<result property="content" column="content" /> 
+		<result property="mem_nick" column="mem_nick" /> 
+		<result property="regdate" column="regdate" /> 
+		<result property="hit" column="hit" /> 
+		<result property="reply_cnt" column="reply_cnt" /> 
+		<result property="fileCnt" column="file_cnt" /> 
+		<result property="memberImg" column="memberImg" /> 
+		<association property="membervo" resultMap="MemberVoResultMap"/> <!-- 추가 --> 
+	</resultMap>
+	
+	<resultMap id="StockResultMap" type="StockVo"> 
+		<id property="data_no" column="data_no"/> 
+		<result property="title" column="title" /> 
+		<result property="content" column="content" /> 
+		<result property="mem_nick" column="mem_nick" /> 
+		<result property="regdate" column="regdate" /> 
+		<result property="hit" column="hit" /> 
+		<result property="reply_cnt" column="reply_cnt" /> 
+		<result property="fileCnt" column="file_cnt" /> 
+		<result property="memberImg" column="memberImg" /> 
+		<association property="membervo" resultMap="MemberVoResultMap"/> <!-- 추가 --> 
+	</resultMap>
+	
 	<resultMap id="MemberVoResultMap" type="MemberVo">
 		<id property="mem_id" column="mem_id" />
 		<result property="mem_pw" column="mem_pw" />
