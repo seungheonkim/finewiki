@@ -3,15 +3,17 @@
 <!DOCTYPE html>
 <html>
 <%@ include file="../include/head.jsp"%>
+
 <body class="hold-transition login-page">
+	<div>test</div>
 	<div class="login-box">
 		<div class="login-logo">
-			<a href="${path}/"><b>Admin</b>LTE</a>
+			<a href="${path}/"><b>Finewiki</b></a>
 		</div>
 		<!-- /.login-logo -->
 		<div class="card">
 			<div class="card-body login-card-body">
-				<p class="login-box-msg">Sign in to start your session</p>
+				<p class="login-box-msg">금융 자산 분석을 보고 싶으시다면 로그인을!!</p>
 
 				<form action="${path}/member/loginPost" method="post">
 					<div class="input-group mb-3">
@@ -36,24 +38,22 @@
 						<div class="col-8">
 							<div class="icheck-primary">
 								<input type="checkbox" id="remember"> <label
-									for="remember"> Remember Me </label>
+									for="remember"> 로그인 정보 저장 </label>
 							</div>
 						</div>
 						<!-- /.col -->
 						<div class="col-4">
-							<button type="submit" class="btn btn-primary btn-block">Sign
-								In</button>
+							<button type="submit" class="btn btn-primary btn-block">로그인</button>
 						</div>
 						<!-- /.col -->
 					</div>
 				</form>
 
 				<p class="mb-1">
-					<a href="#">I forgot my password</a>
+					<a href="#">비밀번호 찾기</a>
 				</p>
 				<p class="mb-0">
-					<a href="${path}/member/register" class="text-center">Register a
-						new membership</a>
+					<a href="${path}/member/register" class="text-center">회원가입</a>
 				</p>
 			</div>
 			<!-- /.login-card-body -->

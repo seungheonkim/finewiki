@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mappers.reply.replyMapper">
+<mapper namespace="com.sesac.finewiki.mappers.reply.replyMapper">
 	<select id="list" resultMap="ReplyResultMap">
 		SELECT 
 		reply_no , 
@@ -66,14 +66,14 @@
 	
 	<!--회원이 작성한 댓글 목록-->
     <select id="memberReplies" resultMap="ReplyResultMap">
-        SELECT
-            reply_text,
-            reg_date,
-            title,
-            data_no
-        FROM reply 
-            LEFT OUTER JOIN board_data
-                ON data_no = data_no
+     SELECT
+            r.reply_text,
+            r.reg_date,
+            b.title,
+            b.data_no
+        FROM reply r
+            LEFT OUTER JOIN board_data b
+                ON b.data_no = r.data_no
         WHERE reply_writer = #{mem_nick}
     </select>
 	 

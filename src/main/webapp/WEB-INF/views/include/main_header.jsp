@@ -26,12 +26,12 @@
 		<c:if test="${not empty login}">
 			<li class="nav-item dropdown user user-menu"><a href="#"
 				class="dropdown-toggle" data-toggle="dropdown"> <img
-					src="${path}/dist/img/default-user-image.jpg" class="user-image"
+					src="${path}/dist/img/profile.png" class="user-image"
 					alt="User Image"> <span class="hidden-xs">${login.mem_name}</span>
 			</a>
 				<ul class="dropdown-menu">
 					<li class="user-header"><img
-						src="${path}/dist/img/default-user-image.jpg" class="img-circle"
+						src="${path}/dist/img/profile.png" class="img-circle"
 						alt="User Image">
 						<p>
 							<small> 가입일자 : <fmt:formatDate

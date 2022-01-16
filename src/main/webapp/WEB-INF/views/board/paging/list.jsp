@@ -127,21 +127,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			<!-- /.control-sidebar -->
 
 			<!-- Main Footer -->
-			<%@ include file="../..//include/footer.jsp"%>
-		</div>
-		<!-- ./wrapper -->
 
-		<!-- REQUIRED SCRIPTS -->
-		<%@ include file="../../include/plugin_js.jsp"%>
-		<script type="text/javascript">
-			var result = "${msg}";
-			if (result == "regSuccess") {
-				alert("게시글 등록이 완료되었습니다.");
-			} else if (result == "modSuccess") {
-				alert("게시글 수정이 완료되었습니다.");
-			} else if (result == "delSuccess") {
-				alert("게시글 삭제가 완료되었습니다.");
-			}
-		</script>
+		</div>
+	</div>
+	<!-- ./wrapper -->
+	<%@ include file="../..//include/footer.jsp"%>
+	<!-- REQUIRED SCRIPTS -->
+	<%@ include file="../../include/plugin_js.jsp"%>
+	<script type="text/javascript">
+		var result = "${msg}";
+		if (result == "regSuccess") {
+			alert("게시글 등록이 완료되었습니다.");
+		} else if (result == "modSuccess") {
+			alert("게시글 수정이 완료되었습니다.");
+		} else if (result == "delSuccess") {
+			alert("게시글 삭제가 완료되었습니다.");
+		}
+	</script>
 </body>
 </html>
