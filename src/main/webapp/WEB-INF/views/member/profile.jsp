@@ -24,7 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-						<h1 class="m-0">내 정보</h1>
+							<h1 class="m-0">내 정보</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
@@ -89,97 +89,132 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								</div>
 							</div>
 						</div>
+
+						<!-- 게시판내가 쓴 글 관련 -->
 						<div class="col-md-7">
 							<div class="card">
 								<div class="nav-tabs-custom">
 									<div class="card-header p-2">
 										<ul class="nav nav-pills">
 											<li class="nav-item"><a class="nav-link active"
-												href="#myPosts" data-toggle="tab"> <i
-													class="fas fa-pencil-square-o"></i> 나의 게시물
+												href="#myStockPosts" data-toggle="tab"> <i
+													class="fas fa-pencil-square-o"></i> 주식게시판
 											</a></li>
+
 											<li class="nav-item"><a class="nav-link"
-												href="#myReplies" data-toggle="tab"> <i
-													class="fas fa-comment-o"></i> 나의 댓글
+												href="#myEstatePosts" data-toggle="tab"> <i
+													class="fas fa-pencil-square-o"></i> 부동산게시판
+											</a></li>
+
+											<li class="nav-item"><a class="nav-link"
+												href="#myFreePosts" data-toggle="tab"> <i
+													class="fas fa-pencil-square-o"></i> 자유게시판
 											</a></li>
 										</ul>
 									</div>
 									<div class="card-body">
 										<div class="tab-content">
-											<div class="active tab-pane" id="myPosts">
-												<table id="myPostsTable"
+
+											<!-- 주식게시판 글 -->
+											<div class="active tab-pane" id="myStockPosts">
+												<table id="myStockPostsTable"
 													class="table table-bordered table-striped">
 													<thead>
 														<tr>
-															<th style="width: 10%">번호</th>
-															<th style="width: 70%">제목</th>
+															<th style="width: 15%">번호</th>
+															<th style="width: 65%">제목</th>
 															<th style="width: 20%">작성일자</th>
 														</tr>
 													</thead>
 													<tbody>
-														<c:forEach var="boardVo" varStatus="i"
-															items="${memberBoardList}">
+														<c:forEach var="stockVo" varStatus="s"
+															items="${memberStockList}">
 															<tr>
-																<td>${i.index + 1}</td>
+																<td>${s.index + 1}</td>
 																<td><a
-																	href="${path}/board/paging/search/read?data_no=${boardVo.data_no}">
+																	href="${path}/board/stock/read?data_no=${stockVo.data_no}">
 																		<c:choose>
-																			<c:when test="${fn:length(boardVo.title) > 30}">
-																				<c:out value="${fn:substring(boardVo.title, 0, 29)}" />
+																			<c:when test="${fn:length(stockVo.title) > 30}">
+																				<c:out value="${fn:substring(stockVo.title, 0, 29)}" />
 																			</c:when>
 																			<c:otherwise>
-																				<c:out value="${boardVo.title}" />
+																				<c:out value="${stockVo.title}" />
 																			</c:otherwise>
 																		</c:choose>
 																</a></td>
 																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
-																		value="${boardVo.regdate}" /></td>
+																		value="${stockVo.regdate}" /></td>
 															</tr>
 														</c:forEach>
 													</tbody>
 												</table>
 											</div>
-											<div class="tab-pane" id="myReplies">
-												<table id="myRepliesTable"
+
+											<!-- 부동산게시판 글 -->
+											<div class="tab-pane" id="myEstatePosts">
+												<table id="myEstatePostsTable"
 													class="table table-bordered table-striped">
 													<thead>
 														<tr>
-															<th style="width: 10px">번호</th>
-															<th style="width: 250px">게시글 제목</th>
-															<th style="width: 250px">내용</th>
-															<th style="width: 150px">작성일자</th>
+															<th style="width: 15%">번호</th>
+															<th style="width: 65%">제목</th>
+															<th style="width: 20%">작성일자</th>
 														</tr>
 													</thead>
 													<tbody>
-														<c:forEach var="memberReply" varStatus="i"
-															items="${memberReplies}">
+														<c:forEach var="estateVo" varStatus="e"
+															items="${memberEstateList}">
 															<tr>
-																<td>${i.index + 1}</td>
+																<td>${e.index + 1}</td>
 																<td><a
-																	href="${path}/board/paging/search/read?data_no=${memberReply.boardVo.data_no}">
+																	href="${path}/board/estate/read?data_no=${estateVo.data_no}">
 																		<c:choose>
-																			<c:when
-																				test="${fn:length(memberReply.boardVo.title) > 10}">
+																			<c:when test="${fn:length(estateVo.title) > 30}">
 																				<c:out
-																					value="${fn:substring(memberReply.boardVo.title, 0, 9)}" />
+																					value="${fn:substring(estateVo.title, 0, 29)}" />
 																			</c:when>
 																			<c:otherwise>
-																				<c:out value="${memberReply.boardVo.title}" />
+																				<c:out value="${estateVo.title}" />
 																			</c:otherwise>
 																		</c:choose>
 																</a></td>
-																<td><c:choose>
-																		<c:when
-																			test="${fn:length(memberReply.reply_text) > 10}">
-																			<c:out
-																				value="${fn:substring(memberReply.reply_text, 0, 9)}" />
-																		</c:when>
-																		<c:otherwise>
-																			<c:out value="${memberReply.reply_text}" />
-																		</c:otherwise>
-																	</c:choose></td>
 																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
-																		value="${memberReply.reg_date}" /></td>
+																		value="${estateVo.regdate}" /></td>
+															</tr>
+														</c:forEach>
+													</tbody>
+												</table>
+											</div>
+
+											<!-- 자유게시판 글 -->
+											<div class="tab-pane" id="myFreePosts">
+												<table id="myFreePostsTable"
+													class="table table-bordered table-striped">
+													<thead>
+														<tr>
+															<th style="width: 15%">번호</th>
+															<th style="width: 65%">제목</th>
+															<th style="width: 20%">작성일자</th>
+														</tr>
+													</thead>
+													<tbody>
+														<c:forEach var="freeVo" varStatus="f"
+															items="${memberFreeList}">
+															<tr>
+																<td>${f.index + 1}</td>
+																<td><a
+																	href="${path}/board/free/read?data_no=${freeVo.data_no}">
+																		<c:choose>
+																			<c:when test="${fn:length(freeVo.title) > 30}">
+																				<c:out value="${fn:substring(freeVo.title, 0, 29)}" />
+																			</c:when>
+																			<c:otherwise>
+																				<c:out value="${freeVo.title}" />
+																			</c:otherwise>
+																		</c:choose>
+																</a></td>
+																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
+																		value="${freeVo.regdate}" /></td>
 															</tr>
 														</c:forEach>
 													</tbody>
@@ -187,13 +222,185 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											</div>
 										</div>
 									</div>
-
 								</div>
 							</div>
 						</div>
 
+						<!-- 게시판내가 쓴 댓글 관련 -->
+						<div class="col-md-7">
+							<div class="card">
+								<div class="nav-tabs-custom">
+									<div class="card-header p-2">
+										<ul class="nav nav-pills">
+											<li class="nav-item"><a class="nav-link active"
+												href="#myStockReplies" data-toggle="tab"> <i
+													class="fas fa-comment-o"></i> 주식 게시판 댓글
+											</a></li>
+
+											<li class="nav-item"><a class="nav-link"
+												href="#myEstateReplies" data-toggle="tab"> <i
+													class="fas fa-comment-o"></i> 부동산 게시판 댓글
+											</a></li>
+
+											<li class="nav-item"><a class="nav-link"
+												href="#myFreeReplies" data-toggle="tab"> <i
+													class="fas fa-comment-o"></i> 자유 게시판 댓글
+											</a></li>
+										</ul>
+									</div>
+									<div class="card-body">
+										<div class="tab-content">
+
+											<!-- 주식게시판 댓글 -->
+											<div class="tab-pane active" id="myStockReplies">
+												<table id="myStockRepliesTable"
+													class="table table-bordered table-striped">
+													<thead>
+														<tr>
+															<th style="width: 100px">번호</th>
+															<th style="width: 250px">게시글 제목</th>
+															<th style="width: 250px">내용</th>
+															<th style="width: 150px">작성일자</th>
+														</tr>
+													</thead>
+													<tbody>
+														<c:forEach var="memberStockReply" varStatus="i"
+															items="${memberStockReplies}">
+															<tr>
+																<td>${i.index + 1}</td>
+																<td><a
+																	href="${path}/board/stock/read?data_no=${memberStockReply.stockVo.data_no}">
+																		<c:choose>
+																			<c:when
+																				test="${fn:length(memberStockReply.stockVo.title) > 10}">
+																				<c:out
+																					value="${fn:substring(memberStockReply.stockVo.title, 0, 9)}" />
+																			</c:when>
+																			<c:otherwise>
+																				<c:out value="${memberStockReply.stockVo.title}" />
+																			</c:otherwise>
+																		</c:choose>
+																</a></td>
+																<td><c:choose>
+																		<c:when
+																			test="${fn:length(memberStockReply.reply_text) > 10}">
+																			<c:out
+																				value="${fn:substring(memberStockReply.reply_text, 0, 9)}" />
+																		</c:when>
+																		<c:otherwise>
+																			<c:out value="${memberStockReply.reply_text}" />
+																		</c:otherwise>
+																	</c:choose></td>
+																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
+																		value="${memberStockReply.reg_date}" /></td>
+															</tr>
+														</c:forEach>
+													</tbody>
+												</table>
+											</div>
+
+											<!-- 부동산게시판 댓글 -->
+											<div class="tab-pane" id="myEstateReplies">
+												<table id="myEstateRepliesTable"
+													class="table table-bordered table-striped">
+													<thead>
+														<tr>
+															<th style="width: 100px">번호</th>
+															<th style="width: 250px">게시글 제목</th>
+															<th style="width: 250px">내용</th>
+															<th style="width: 150px">작성일자</th>
+														</tr>
+													</thead>
+													<tbody>
+														<c:forEach var="memberEstateReply" varStatus="i"
+															items="${memberEstateReplies}">
+															<tr>
+																<td>${i.index + 1}</td>
+																<td><a
+																	href="${path}/board/estate/read?data_no=${memberEstateReply.estateVo.data_no}">
+																		<c:choose>
+																			<c:when
+																				test="${fn:length(memberEstateReply.estateVo.title) > 10}">
+																				<c:out
+																					value="${fn:substring(memberEstateReply.estateVo.title, 0, 9)}" />
+																			</c:when>
+																			<c:otherwise>
+																				<c:out value="${memberEstateReply.estateVo.title}" />
+																			</c:otherwise>
+																		</c:choose>
+																</a></td>
+																<td><c:choose>
+																		<c:when
+																			test="${fn:length(memberEstateReply.reply_text) > 10}">
+																			<c:out
+																				value="${fn:substring(memberEstateReply.reply_text, 0, 9)}" />
+																		</c:when>
+																		<c:otherwise>
+																			<c:out value="${memberEstateReply.reply_text}" />
+																		</c:otherwise>
+																	</c:choose></td>
+																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
+																		value="${memberEstateReply.reg_date}" /></td>
+															</tr>
+														</c:forEach>
+													</tbody>
+												</table>
+											</div>
+
+											<!-- 자유게시판 댓글 -->
+											<div class="tab-pane" id="myFreeReplies">
+												<table id="myFreeRepliesTable"
+													class="table table-bordered table-striped">
+													<thead>
+														<tr>
+															<th style="width: 100px">번호</th>
+															<th style="width: 250px">게시글 제목</th>
+															<th style="width: 250px">내용</th>
+															<th style="width: 150px">작성일자</th>
+														</tr>
+													</thead>
+													<tbody>
+														<c:forEach var="memberFreeReply" varStatus="i"
+															items="${memberFreeReplies}">
+															<tr>
+																<td>${i.index + 1}</td>
+																<td><a
+																	href="${path}/board/free/read?data_no=${memberFreeReply.freeVo.data_no}">
+																		<c:choose>
+																			<c:when
+																				test="${fn:length(memberFreeReply.freeVo.title) > 10}">
+																				<c:out
+																					value="${fn:substring(memberFreeReply.freeVo.title, 0, 9)}" />
+																			</c:when>
+																			<c:otherwise>
+																				<c:out value="${memberFreeReply.freeVo.title}" />
+																			</c:otherwise>
+																		</c:choose>
+																</a></td>
+																<td><c:choose>
+																		<c:when
+																			test="${fn:length(memberFreeReply.reply_text) > 10}">
+																			<c:out
+																				value="${fn:substring(memberFreeReply.reply_text, 0, 9)}" />
+																		</c:when>
+																		<c:otherwise>
+																			<c:out value="${memberFreeReply.reply_text}" />
+																		</c:otherwise>
+																	</c:choose></td>
+																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
+																		value="${memberFreeReply.reg_date}" /></td>
+															</tr>
+														</c:forEach>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
+				</div> 
 				<!-- /.content -->
 			</div>
 			<!-- /.content-wrapper -->
@@ -264,8 +471,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 						}
 					}
 				};
-				$("#myPostsTable").DataTable(param);
-				$("#myRepliesTable").DataTable(param);
+				$("#myStockPostsTable").DataTable(param);
+				$("#myEstatePostsTable").DataTable(param);
+				$("#myFreePostsTable").DataTable(param);
+
+				$("#myStockRepliesTable").DataTable(param);
+				$("#myEstateRepliesTable").DataTable(param);
+				$("#myFreeRepliesTable").DataTable(param);
+
 				$("#myBookmarksTable").DataTable(param);
 			});
 		</script>

@@ -13,9 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.sesac.finewiki.paging.Criteria;
 import com.sesac.finewiki.paging.PageMaker;
 import com.sesac.finewiki.paging.SearchCriteria;
-import com.sesac.finewiki.vo.BoardVo;
 import com.sesac.finewiki.vo.FreeVo;
-import com.sesac.finewiki.service.StockDashBoardService;
 import com.sesac.finewiki.service.FreeService;
 
 @Controller
@@ -50,8 +48,8 @@ public class FreeBoardController {
 		pageMaker.setCriteria(searchCriteria);
 		pageMaker.setTotalCount(freeService.countFrees(searchCriteria));
 		pageMaker.setTotalCount(freeService.countSearchedFrees(searchCriteria));
-		model.addAttribute("Frees", freeService.listCriteria(searchCriteria));
-		model.addAttribute("Frees", freeService.listSearch(searchCriteria));
+		model.addAttribute("frees", freeService.listCriteria(searchCriteria));
+		model.addAttribute("frees", freeService.listSearch(searchCriteria));
 		model.addAttribute("pageMaker", pageMaker);
 		return "board/free/list";
 	}
@@ -59,7 +57,7 @@ public class FreeBoardController {
 	@RequestMapping(value = "/listCriteria", method = RequestMethod.GET)
 	public String listCriteria(Model model, Criteria criteria) throws Exception {
 		logger.info("listCriteria ...");
-		model.addAttribute("Frees", freeService.listCriteria(criteria));
+		model.addAttribute("frees", freeService.listCriteria(criteria));
 		return "/board/free/list_criteria";
 	}
 

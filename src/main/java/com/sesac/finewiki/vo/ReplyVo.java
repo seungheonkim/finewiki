@@ -9,12 +9,17 @@ public class ReplyVo {
 	private String reply_writer;
 	private Date reg_date;
 	private Date update_date;
+	private StockVo stockvo;
+	private EstateVo estatevo;
+	private FreeVo freevo;
+	private MemberVo membervo;
 
 	public ReplyVo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ReplyVo(int reply_no, int data_no, String reply_text, String reply_writer, Date reg_date, Date update_date) {
+	public ReplyVo(int reply_no, int data_no, String reply_text, String reply_writer, Date reg_date, Date update_date,
+			StockVo stockvo, EstateVo estatevo, FreeVo freevo, MemberVo membervo) {
 		super();
 		this.reply_no = reply_no;
 		this.data_no = data_no;
@@ -22,6 +27,10 @@ public class ReplyVo {
 		this.reply_writer = reply_writer;
 		this.reg_date = reg_date;
 		this.update_date = update_date;
+		this.stockvo = stockvo;
+		this.estatevo = estatevo;
+		this.freevo = freevo;
+		this.membervo = membervo;
 	}
 
 	public int getReply_no() {
@@ -72,10 +81,44 @@ public class ReplyVo {
 		this.update_date = update_date;
 	}
 
+	public StockVo getStockvo() {
+		return stockvo;
+	}
+
+	public void setStockvo(StockVo stockvo) {
+		this.stockvo = stockvo;
+	}
+
+	public EstateVo getEstatevo() {
+		return estatevo;
+	}
+
+	public void setEstatevo(EstateVo estatevo) {
+		this.estatevo = estatevo;
+	}
+
+	public FreeVo getFreevo() {
+		return freevo;
+	}
+
+	public void setFreevo(FreeVo freevo) {
+		this.freevo = freevo;
+	}
+
+	public MemberVo getMembervo() {
+		return membervo;
+	}
+
+	public void setMembervo(MemberVo membervo) {
+		this.membervo = membervo;
+	}
+
 	@Override
 	public String toString() {
 		return "ReplyVo [reply_no=" + reply_no + ", data_no=" + data_no + ", reply_text=" + reply_text
-				+ ", reply_writer=" + reply_writer + ", reg_date=" + reg_date + ", update_date=" + update_date + "]";
+				+ ", reply_writer=" + reply_writer + ", reg_date=" + reg_date + ", update_date=" + update_date
+				+ ", stockvo=" + stockvo + ", estatevo=" + estatevo + ", freevo=" + freevo + ", membervo=" + membervo
+				+ "]";
 	}
-	
+
 }

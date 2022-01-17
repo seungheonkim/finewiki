@@ -59,8 +59,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											<span class="text-bold text-lg">코스피</span> <span>2887.07</span>
 										</p>
 										<p class="ml-auto d-flex flex-column text-right">
-											<span class="text-danger"> <i
-												class="fas fa-arrow-up"></i> +1.19%
+											<span class="text-primary"> <i
+												class="fas fa-arrow-down"></i> -2.19%
 											</span> <span class="text-muted">전월 대비</span>
 										</p>
 									</div>
@@ -83,7 +83,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<div class="d-flex flex-row justify-content-end">
 										<span class="mr-2"> <i
 											class="fas fa-square text-primary"></i>1 월
-										</span> <span> <i class="fas fa-square text-gray"></i>12 월
+										</span> <span> <i class="fas fa-square text-danger"></i>12 월
 										</span>
 									</div>
 								</div>
@@ -172,20 +172,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<div class="card">
 								<div class="card-header border-0">
 									<div class="d-flex justify-content-between">
-										<h3 class="card-title">Sales</h3>
+										<h3 class="card-title">주요 재무</h3>
 										<a href="javascript:void(0);">자세한 분석 보기</a>
 									</div>
 								</div>
 								<div class="card-body">
 									<div class="d-flex">
 										<p class="d-flex flex-column">
-											<span class="text-bold text-lg">$18,230.00</span> <span>Sales
-												Over Time</span>
+											<span class="text-bold text-lg">카카오</span> <span>035720<small>코스피</small></span>
 										</p>
 										<p class="ml-auto d-flex flex-column text-right">
-											<span class="text-success"> <i class="fas fa-arrow-up"></i>
-												33.1%
-											</span> <span class="text-muted">Since last month</span>
+											<span class="text-primary"> <i class="fas fa-arrow-down"></i>
+												-21.0%
+											</span> <span class="text-muted">전월 대비</span>
 										</p>
 									</div>
 									<!-- /.d-flex -->
@@ -199,16 +198,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
 												<div class=""></div>
 											</div>
 										</div>
-										<canvas id="sales-chart" height="400" width="620"
+										<canvas id="myChart2" height="400" width="620"
 											class="chartjs-render-monitor"
 											style="display: block; height: 200px; width: 310px;"></canvas>
 									</div>
 
 									<div class="d-flex flex-row justify-content-end">
-										<span class="mr-2"> <i
-											class="fas fa-square text-primary"></i> This year
-										</span> <span> <i class="fas fa-square text-gray"></i> Last
-											year
+										<span class="mr-2">
+										 <i	class="fas fa-square" style="color:#FF6384 "></i><small>매출액</small>
+										</span>
+										<span>
+										  <i class="fas fa-square" style="color:#007BFF"></i><small>영업이익</small>
+										</span>
+										<span>
+										  <i class="fas fa-square" style="color:#6CBDBF"></i><small>당기순이익</small>
+										</span>
+										<span>
+										  <i class="fas fa-square" style="color:#8F63E8"></i><small>지배주주순이익</small>
+										</span>
+										<span>
+										  <i class="fas fa-square" style="color:#647BCD"></i><small>비재배주주순이익</small>
 										</span>
 									</div>
 								</div>
@@ -217,7 +226,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 							<div class="card">
 								<div class="card-header border-0">
-									<h3 class="card-title">Online Store Overview</h3>
+									<h3 class="card-title">투자자별 매매동향</h3>
 									<div class="card-tools">
 										<a href="#" class="btn btn-sm btn-tool"> <i
 											class="fas fa-download"></i>
@@ -235,7 +244,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<p class="d-flex flex-column text-right">
 											<span class="font-weight-bold"> <i
 												class="ion ion-android-arrow-up text-success"></i> 12%
-											</span> <span class="text-muted">CONVERSION RATE</span>
+											</span> <span class="text-muted">개인</span>
 										</p>
 									</div>
 									<!-- /.d-flex -->
@@ -247,7 +256,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<p class="d-flex flex-column text-right">
 											<span class="font-weight-bold"> <i
 												class="ion ion-android-arrow-up text-warning"></i> 0.8%
-											</span> <span class="text-muted">SALES RATE</span>
+											</span> <span class="text-muted">외국인</span>
 										</p>
 									</div>
 									<!-- /.d-flex -->
@@ -259,7 +268,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<p class="d-flex flex-column text-right">
 											<span class="font-weight-bold"> <i
 												class="ion ion-android-arrow-down text-danger"></i> 1%
-											</span> <span class="text-muted">REGISTRATION RATE</span>
+											</span> <span class="text-muted">기관</span>
 										</p>
 									</div>
 									<!-- /.d-flex -->
@@ -293,5 +302,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 	<!-- REQUIRED SCRIPTS -->
 	<%@ include file="../include/plugin_js.jsp"%>
+	<%@ include file="../include/charts.jsp"%>
 </body>
 </html>

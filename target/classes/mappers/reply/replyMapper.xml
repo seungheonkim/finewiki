@@ -85,7 +85,9 @@
 		<result property="reg_date" column="reg_date" />
 		<result property="update_date" column="update_date" />
 		<association property="membervo" resultMap="MemberVoResultMap"/>
-        <association property="boardvo" resultMap="BoardResultMap"/>		
+        <association property="stockvo" resultMap="StockResultMap"/>		
+        <association property="estatevo" resultMap="EstateResultMap"/>		
+        <association property="freevo" resultMap="FreeResultMap"/>		
 	</resultMap>
 	
 	<resultMap id="BoardResultMap" type="BoardVo">

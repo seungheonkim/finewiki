@@ -73,14 +73,14 @@
 								class="img" alt="User Image">
 								<p style="color: black">&nbsp;&nbsp;&nbsp;주식 Dashboard</p>
 						</a></li>
-						<li class="nav-item"><a href="${path}/board/estate/list"
+						<li class="nav-item"><a href="${path}/dashboard/estate"
 							class="nav-link"><img src="${path}/dist/img/estate.png"
 								class="img" alt="User Image">
 								<p style="color: black">&nbsp;&nbsp;&nbsp;부동산 Dashboard</p> </a></li>
-						<li class="nav-item"><a href="${path}/board/free/list"
+						<li class="nav-item"><a href="${path}/dashboard/free"
 							class="nav-link"> <img src="${path}/dist/img/free.png"
 								class="img" alt="User Image">
-								<p style="color: black">&nbsp;&nbsp;&nbsp;&nbsp;기타 자산
+								<p style="color: black">&nbsp;&nbsp;기타 금융 자산
 									Dashboard</p>
 						</a></li>
 					</ul></li>
