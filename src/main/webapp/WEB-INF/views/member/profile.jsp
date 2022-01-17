@@ -127,23 +127,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 														</tr>
 													</thead>
 													<tbody>
-														<c:forEach var="stockVo" varStatus="s"
+														<c:forEach var="stockvo" varStatus="s"
 															items="${memberStockList}">
 															<tr>
 																<td>${s.index + 1}</td>
 																<td><a
-																	href="${path}/board/stock/read?data_no=${stockVo.data_no}">
+																	href="${path}/board/stock/read?data_no=${stockvo.data_no}">
 																		<c:choose>
-																			<c:when test="${fn:length(stockVo.title) > 30}">
-																				<c:out value="${fn:substring(stockVo.title, 0, 29)}" />
+																			<c:when test="${fn:length(stockvo.title) > 30}">
+																				<c:out value="${fn:substring(stockvo.title, 0, 29)}" />
 																			</c:when>
 																			<c:otherwise>
-																				<c:out value="${stockVo.title}" />
+																				<c:out value="${stockvo.title}" />
 																			</c:otherwise>
 																		</c:choose>
 																</a></td>
 																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
-																		value="${stockVo.regdate}" /></td>
+																		value="${stockvo.regdate}" /></td>
 															</tr>
 														</c:forEach>
 													</tbody>
@@ -162,24 +162,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 														</tr>
 													</thead>
 													<tbody>
-														<c:forEach var="estateVo" varStatus="e"
+														<c:forEach var="estatevo" varStatus="e"
 															items="${memberEstateList}">
 															<tr>
 																<td>${e.index + 1}</td>
 																<td><a
-																	href="${path}/board/estate/read?data_no=${estateVo.data_no}">
+																	href="${path}/board/estate/read?data_no=${estatevo.data_no}">
 																		<c:choose>
-																			<c:when test="${fn:length(estateVo.title) > 30}">
+																			<c:when test="${fn:length(estatevo.title) > 30}">
 																				<c:out
-																					value="${fn:substring(estateVo.title, 0, 29)}" />
+																					value="${fn:substring(estatevo.title, 0, 29)}" />
 																			</c:when>
 																			<c:otherwise>
-																				<c:out value="${estateVo.title}" />
+																				<c:out value="${estatevo.title}" />
 																			</c:otherwise>
 																		</c:choose>
 																</a></td>
 																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
-																		value="${estateVo.regdate}" /></td>
+																		value="${estatevo.regdate}" /></td>
 															</tr>
 														</c:forEach>
 													</tbody>
@@ -198,23 +198,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 														</tr>
 													</thead>
 													<tbody>
-														<c:forEach var="freeVo" varStatus="f"
+														<c:forEach var="freevo" varStatus="f"
 															items="${memberFreeList}">
 															<tr>
 																<td>${f.index + 1}</td>
 																<td><a
-																	href="${path}/board/free/read?data_no=${freeVo.data_no}">
+																	href="${path}/board/free/read?data_no=${freevo.data_no}">
 																		<c:choose>
-																			<c:when test="${fn:length(freeVo.title) > 30}">
-																				<c:out value="${fn:substring(freeVo.title, 0, 29)}" />
+																			<c:when test="${fn:length(freevo.title) > 30}">
+																				<c:out value="${fn:substring(freevo.title, 0, 29)}" />
 																			</c:when>
 																			<c:otherwise>
-																				<c:out value="${freeVo.title}" />
+																				<c:out value="${freevo.title}" />
 																			</c:otherwise>
 																		</c:choose>
 																</a></td>
 																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
-																		value="${freeVo.regdate}" /></td>
+																		value="${freevo.regdate}" /></td>
 															</tr>
 														</c:forEach>
 													</tbody>
@@ -269,15 +269,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 															<tr>
 																<td>${i.index + 1}</td>
 																<td><a
-																	href="${path}/board/stock/read?data_no=${memberStockReply.stockVo.data_no}">
+																	href="${path}/board/stock/read?data_no=${memberStockReply.stockvo.data_no}">
 																		<c:choose>
 																			<c:when
-																				test="${fn:length(memberStockReply.stockVo.title) > 10}">
+																				test="${fn:length(memberStockReply.stockvo.title) > 10}">
 																				<c:out
-																					value="${fn:substring(memberStockReply.stockVo.title, 0, 9)}" />
+																					value="${fn:substring(memberStockReply.stockvo.title, 0, 9)}" />
 																			</c:when>
 																			<c:otherwise>
-																				<c:out value="${memberStockReply.stockVo.title}" />
+																				<c:out value="${memberStockReply.stockvo.title}" />
 																			</c:otherwise>
 																		</c:choose>
 																</a></td>
@@ -317,15 +317,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 															<tr>
 																<td>${i.index + 1}</td>
 																<td><a
-																	href="${path}/board/estate/read?data_no=${memberEstateReply.estateVo.data_no}">
+																	href="${path}/board/estate/read?data_no=${memberEstateReply.estatevo.data_no}">
 																		<c:choose>
 																			<c:when
-																				test="${fn:length(memberEstateReply.estateVo.title) > 10}">
+																				test="${fn:length(memberEstateReply.estatevo.title) > 10}">
 																				<c:out
-																					value="${fn:substring(memberEstateReply.estateVo.title, 0, 9)}" />
+																					value="${fn:substring(memberEstateReply.estatevo.title, 0, 9)}" />
 																			</c:when>
 																			<c:otherwise>
-																				<c:out value="${memberEstateReply.estateVo.title}" />
+																				<c:out value="${memberEstateReply.estatevo.title}" />
 																			</c:otherwise>
 																		</c:choose>
 																</a></td>
@@ -365,15 +365,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 															<tr>
 																<td>${i.index + 1}</td>
 																<td><a
-																	href="${path}/board/free/read?data_no=${memberFreeReply.freeVo.data_no}">
+																	href="${path}/board/free/read?data_no=${memberFreeReply.freevo.data_no}">
 																		<c:choose>
 																			<c:when
-																				test="${fn:length(memberFreeReply.freeVo.title) > 10}">
+																				test="${fn:length(memberFreeReply.freevo.title) > 10}">
 																				<c:out
-																					value="${fn:substring(memberFreeReply.freeVo.title, 0, 9)}" />
+																					value="${fn:substring(memberFreeReply.freevo.title, 0, 9)}" />
 																			</c:when>
 																			<c:otherwise>
-																				<c:out value="${memberFreeReply.freeVo.title}" />
+																				<c:out value="${memberFreeReply.freevo.title}" />
 																			</c:otherwise>
 																		</c:choose>
 																</a></td>

@@ -18,17 +18,22 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sesac.finewiki.service.StockDashBoardService;
+import com.sesac.finewiki.service.StockReplyService;
 import com.sesac.finewiki.service.StockService;
+import com.sesac.finewiki.service.EstateReplyService;
 import com.sesac.finewiki.service.EstateService;
+import com.sesac.finewiki.service.FreeReplyService;
 import com.sesac.finewiki.service.FreeService;
 import com.sesac.finewiki.service.MemberService;
-import com.sesac.finewiki.service.ReplyService;
 import com.sesac.finewiki.util.UploadFileUtils;
 import com.sesac.finewiki.vo.BoardVo;
+import com.sesac.finewiki.vo.EstateReplyVo;
 import com.sesac.finewiki.vo.EstateVo;
+import com.sesac.finewiki.vo.FreeReplyVo;
 import com.sesac.finewiki.vo.FreeVo;
 import com.sesac.finewiki.vo.MemberVo;
 import com.sesac.finewiki.vo.ReplyVo;
+import com.sesac.finewiki.vo.StockReplyVo;
 import com.sesac.finewiki.vo.StockVo;
 
 @Controller
@@ -49,7 +54,12 @@ public class MemberInfoController {
 	private StockDashBoardService boardService;
 
 	@Inject
-	private ReplyService replyService;
+	private StockReplyService stockReplyService;
+	@Inject
+	private EstateReplyService estateReplyService;
+	@Inject
+	private FreeReplyService freeReplyService;
+	
 
 	@Resource(name = "mem_imagePath")
 	private String mem_imagePath;
@@ -145,18 +155,24 @@ public class MemberInfoController {
 		MemberVo vo = (MemberVo) memberObj;
 
 		String mem_id = vo.getMem_id();
+		String nick = vo.getNick();
 
 		List<StockVo> memberStockList = stockService.memberStockList(mem_id);
 		List<EstateVo> memberEstateList = estateService.memberEstateList(mem_id);
 		List<FreeVo> memberFreeList = freeService.memberFreeList(mem_id);
 
-		List<ReplyVo> memberReplies = replyService.memberReplies(mem_id);
+		List<StockReplyVo> memberStockReplies = stockReplyService.memberStockReplies(nick);
+		List<EstateReplyVo> memberEstateReplies = estateReplyService.memberEstateReplies(nick);
+		List<FreeReplyVo> memberFreeReplies = freeReplyService.memberFreeReplies(nick);
 
 		model.addAttribute("memberStockList", memberStockList);
 		model.addAttribute("memberEstateList", memberEstateList);
 		model.addAttribute("memberFreeList", memberFreeList);
 
-		model.addAttribute("memberReplies", memberReplies);
+		model.addAttribute("memberStockReplies", memberStockReplies);
+		model.addAttribute("memberEstateReplies", memberEstateReplies);
+		model.addAttribute("memberFreeReplies", memberFreeReplies);
+		
 
 		return "member/profile";
 	}
