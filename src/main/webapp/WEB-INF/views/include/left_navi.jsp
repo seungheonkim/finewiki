@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<aside class="main-sidebar sidebar-light-primary elevation-4" style="background:#8cbaff">
+<aside class="main-sidebar sidebar-light-primary elevation-4"
+	style="background: #8cbaff">
 	<!-- Brand Logo -->
 	<a href="/finewiki" class="brand-link"> <img
 		src="${path}/dist/img/finewiki.png" alt="Finewiki Logo"
@@ -43,46 +44,44 @@
 						class="img" alt="User Image">
 						<p>
 							&nbsp;&nbsp;&nbsp;&nbsp;게시판 홈<i class="right fas fa-angle-left"></i>
-						</p>
-				</a>
+						</p> </a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item"><a href="${path}/board/stock/list"
 							class="nav-link"> <img src="${path}/dist/img/stock.png"
-						class="img" alt="User Image">
-								<p style="color:black">&nbsp;&nbsp;&nbsp;주식 게시판</p>
+								class="img" alt="User Image">
+								<p style="color: black">&nbsp;&nbsp;&nbsp;주식 게시판</p>
 						</a></li>
 						<li class="nav-item"><a href="${path}/board/estate/list"
 							class="nav-link"><img src="${path}/dist/img/estate.png"
-						class="img" alt="User Image">
-								<p style="color:black">&nbsp;&nbsp;&nbsp;부동산 게시판</p>
-						</a></li>
+								class="img" alt="User Image">
+								<p style="color: black">&nbsp;&nbsp;&nbsp;부동산 게시판</p> </a></li>
 						<li class="nav-item"><a href="${path}/board/free/list"
 							class="nav-link"> <img src="${path}/dist/img/free.png"
-						class="img" alt="User Image">
-								<p style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;자유 게시판</p>
+								class="img" alt="User Image">
+								<p style="color: black">&nbsp;&nbsp;&nbsp;&nbsp;자유 게시판</p>
 						</a></li>
 					</ul></li>
 				<li class="nav-item has-treeview menu-open"><a href="#"
 					class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i>
 						<p>
-							&nbsp;&nbsp;&nbsp;&nbsp;Dashboard 홈<i class="right fas fa-angle-left"></i>
-						</p>
-				</a>
+							&nbsp;&nbsp;&nbsp;&nbsp;Dashboard 홈<i
+								class="right fas fa-angle-left"></i>
+						</p> </a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item"><a href="${path}/dashboard/stock"
 							class="nav-link"> <img src="${path}/dist/img/stock.png"
-						class="img" alt="User Image">
-								<p style="color:black">&nbsp;&nbsp;&nbsp;주식 Dashboard</p>
+								class="img" alt="User Image">
+								<p style="color: black">&nbsp;&nbsp;&nbsp;주식 Dashboard</p>
 						</a></li>
 						<li class="nav-item"><a href="${path}/board/estate/list"
 							class="nav-link"><img src="${path}/dist/img/estate.png"
-						class="img" alt="User Image">
-								<p style="color:black">&nbsp;&nbsp;&nbsp;부동산 Dashboard</p>
-						</a></li>
+								class="img" alt="User Image">
+								<p style="color: black">&nbsp;&nbsp;&nbsp;부동산 Dashboard</p> </a></li>
 						<li class="nav-item"><a href="${path}/board/free/list"
 							class="nav-link"> <img src="${path}/dist/img/free.png"
-						class="img" alt="User Image">
-								<p style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;기타 자산 Dashboard</p>
+								class="img" alt="User Image">
+								<p style="color: black">&nbsp;&nbsp;&nbsp;&nbsp;기타 자산
+									Dashboard</p>
 						</a></li>
 					</ul></li>
 			</ul>
