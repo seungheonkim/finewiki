@@ -284,7 +284,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										return accum;
 									});
 							// 댓글 목록 함수 호출
-							getReplies("${path}/replies/stock/" + data_no + "/"
+							getReplies("${path}/replies/" + data_no + "/"
 									+ replyPageNum);
 
 							// 댓글 목록 함수
@@ -356,7 +356,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									function(event) {
 										event.preventDefault();
 										replyPageNum = $(this).attr("href");
-										getReplies("${path}/replies/stock/" + data_no
+										getReplies("${path}/replies/" + data_no
 												+ "/" + replyPageNum);
 									});
 							// 댓글 저장 버튼 클릭 이벤트
@@ -375,7 +375,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 												$
 														.ajax({
 															type : "post",
-															url : "${path}/replies/stock/",
+															url : "${path}/replies/",
 															headers : {
 																"Content-Type" : "application/json",
 																"X-HTTP-Method-Override" : "POST"
@@ -395,7 +395,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 																if (result === "regSuccess") {
 																	alert("댓글이 등록되었습니다.");
 																	replyPageNum = 1; // 페이지 1로 초기화
-																	getReplies("${path}/replies/stock/"
+																	getReplies("${path}/replies/"
 																			+ data_no
 																			+ "/"
 																			+ replyPageNum);// 댓글 목록 호출
@@ -431,7 +431,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 												$
 														.ajax({
 															type : "put",
-															url : "${path}/replies/stock/"
+															url : "${path}/replies/"
 																	+ reply_no,
 															headers : {
 																"Content-Type" : "application/json",
@@ -449,7 +449,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 																				+ result);
 																if (result === "modSuccess") {
 																	alert("댓글이 수정되었습니다.");
-																	getReplies("${path}/replies/stock/"
+																	getReplies("${path}/replies/"
 																			+ data_no
 																			+ "/"
 																			+ replyPageNum); // 댓글 목록 호출
@@ -471,7 +471,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 												$
 														.ajax({
 															type : "delete",
-															url : "${path}/replies/stock/"
+															url : "${path}/replies/"
 																	+ reply_no,
 															headers : {
 																"Content-Type" : "application/json",
@@ -485,7 +485,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 																				+ result);
 																if (result === "delSuccess") {
 																	alert("댓글이 삭제되었습니다.");
-																	getReplies("${path}/replies/stock/"
+																	getReplies("${path}/replies/"
 																			+ data_no
 																			+ "/"
 																			+ replyPageNum); // 댓글 목록 호출 

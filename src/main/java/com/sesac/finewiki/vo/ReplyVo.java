@@ -13,13 +13,14 @@ public class ReplyVo {
 	private EstateVo estatevo;
 	private FreeVo freevo;
 	private MemberVo membervo;
+	private BoardVo boardvo;
 
 	public ReplyVo() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public ReplyVo(int reply_no, int data_no, String reply_text, String reply_writer, Date reg_date, Date update_date,
-			StockVo stockvo, EstateVo estatevo, FreeVo freevo, MemberVo membervo) {
+			StockVo stockvo, EstateVo estatevo, FreeVo freevo, MemberVo membervo, BoardVo boardvo) {
 		super();
 		this.reply_no = reply_no;
 		this.data_no = data_no;
@@ -31,6 +32,15 @@ public class ReplyVo {
 		this.estatevo = estatevo;
 		this.freevo = freevo;
 		this.membervo = membervo;
+		this.boardvo = boardvo;
+	}
+
+	public BoardVo getBoardvo() {
+		return boardvo;
+	}
+
+	public void setBoardvo(BoardVo boardvo) {
+		this.boardvo = boardvo;
 	}
 
 	public int getReply_no() {
@@ -118,7 +128,7 @@ public class ReplyVo {
 		return "ReplyVo [reply_no=" + reply_no + ", data_no=" + data_no + ", reply_text=" + reply_text
 				+ ", reply_writer=" + reply_writer + ", reg_date=" + reg_date + ", update_date=" + update_date
 				+ ", stockvo=" + stockvo + ", estatevo=" + estatevo + ", freevo=" + freevo + ", membervo=" + membervo
-				+ "]";
+				+ ", boardvo=" + boardvo + "]";
 	}
 
 }
