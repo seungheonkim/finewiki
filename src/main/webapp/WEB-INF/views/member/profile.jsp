@@ -48,8 +48,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								<div class="card-body box-profile">
 									<div class="text-center">
 										<img class="profile-user-img img-fluid img-circle"
-											src="${path}/dist/img/profile/${login.mem_img}"
-											alt="User profile picture">
+											src="${path}/dist/img/profile.png" alt="User profile picture">
 									</div>
 									<h3 class="profile-username text-center">${login.mem_name}</h3>
 
@@ -76,10 +75,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									</ul>
 								</div>
 								<div class="card-footer text-center">
-									<a href="#" class="btn btn-primary btn-xs" data-toggle="modal"
+									<a href="#" class="btn btn-primary btn-xs infoModBtn" data-toggle="modal"
 										data-target="#userInfoModal"> <i class="fa fa-info-circle">
 											회원정보 수정</i>
-									</a> <a href="#" class="btn btn-primary btn-xs" data-toggle="modal"
+									</a> <a href="#" class="btn btn-primary btn-xs pwModBtn" data-toggle="modal"
 										data-target="#userPwModal"> <i
 										class="fa fa-question-circle"> 비밀번호 수정</i>
 									</a> <a href="#" class="btn btn-primary btn-xs" data-toggle="modal"
@@ -122,8 +121,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 													<thead>
 														<tr>
 															<th style="width: 15%">번호</th>
-															<th style="width: 65%">제목</th>
-															<th style="width: 20%">작성일자</th>
+															<th style="width: 25%">제목</th>
+															<th style="width: 65%">내용</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -134,16 +133,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 																<td><a
 																	href="${path}/board/stock/read?data_no=${stockvo.data_no}">
 																		<c:choose>
-																			<c:when test="${fn:length(stockvo.title) > 30}">
-																				<c:out value="${fn:substring(stockvo.title, 0, 29)}" />
+																			<c:when test="${fn:length(stockvo.title) > 10}">
+																				<c:out value="${fn:substring(stockvo.title, 0, 9)}" />
 																			</c:when>
 																			<c:otherwise>
 																				<c:out value="${stockvo.title}" />
 																			</c:otherwise>
 																		</c:choose>
 																</a></td>
-																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
-																		value="${stockvo.regdate}" /></td>
+																<td><c:choose>
+																		<c:when test="${fn:length(stockvo.content) > 30}">
+																			<c:out
+																				value="${fn:substring(stockvo.content, 0, 29)}" />
+																		</c:when>
+																		<c:otherwise>
+																			<c:out value="${stockvo.content}" />
+																		</c:otherwise>
+																	</c:choose></td>
 															</tr>
 														</c:forEach>
 													</tbody>
@@ -157,8 +163,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 													<thead>
 														<tr>
 															<th style="width: 15%">번호</th>
-															<th style="width: 65%">제목</th>
-															<th style="width: 20%">작성일자</th>
+															<th style="width: 25%">제목</th>
+															<th style="width: 65%">내용</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -169,17 +175,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 																<td><a
 																	href="${path}/board/estate/read?data_no=${estatevo.data_no}">
 																		<c:choose>
-																			<c:when test="${fn:length(estatevo.title) > 30}">
-																				<c:out
-																					value="${fn:substring(estatevo.title, 0, 29)}" />
+																			<c:when test="${fn:length(estatevo.title) > 10}">
+																				<c:out value="${fn:substring(estatevo.title, 0, 9)}" />
 																			</c:when>
 																			<c:otherwise>
 																				<c:out value="${estatevo.title}" />
 																			</c:otherwise>
 																		</c:choose>
 																</a></td>
-																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
-																		value="${estatevo.regdate}" /></td>
+																<td><c:choose>
+																		<c:when test="${fn:length(estatevo.content) > 30}">
+																			<c:out
+																				value="${fn:substring(estatevo.content, 0, 29)}" />
+																		</c:when>
+																		<c:otherwise>
+																			<c:out value="${freeestatevovo.content}" />
+																		</c:otherwise>
+																	</c:choose></td>
 															</tr>
 														</c:forEach>
 													</tbody>
@@ -193,8 +205,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 													<thead>
 														<tr>
 															<th style="width: 15%">번호</th>
-															<th style="width: 65%">제목</th>
-															<th style="width: 20%">작성일자</th>
+															<th style="width: 25%">제목</th>
+															<th style="width: 65%">내용</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -205,16 +217,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
 																<td><a
 																	href="${path}/board/free/read?data_no=${freevo.data_no}">
 																		<c:choose>
-																			<c:when test="${fn:length(freevo.title) > 30}">
-																				<c:out value="${fn:substring(freevo.title, 0, 29)}" />
+																			<c:when test="${fn:length(freevo.title) > 10}">
+																				<c:out value="${fn:substring(freevo.title, 0, 9)}" />
 																			</c:when>
 																			<c:otherwise>
 																				<c:out value="${freevo.title}" />
 																			</c:otherwise>
 																		</c:choose>
 																</a></td>
-																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
-																		value="${freevo.regdate}" /></td>
+																<td><c:choose>
+																		<c:when test="${fn:length(freevo.content) > 30}">
+																			<c:out value="${fn:substring(freevo.content, 0, 29)}" />
+																		</c:when>
+																		<c:otherwise>
+																			<c:out value="${freevo.content}" />
+																		</c:otherwise>
+																	</c:choose></td>
 															</tr>
 														</c:forEach>
 													</tbody>
@@ -227,7 +245,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 						</div>
 
 						<!-- 게시판내가 쓴 댓글 관련 -->
-						<div class="col-md-7">
+						<div class="col-md-5">
 							<div class="card">
 								<div class="nav-tabs-custom">
 									<div class="card-header p-2">
@@ -260,7 +278,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 															<th style="width: 100px">번호</th>
 															<th style="width: 250px">게시글 제목</th>
 															<th style="width: 250px">내용</th>
-															<th style="width: 150px">작성일자</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -291,8 +308,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 																			<c:out value="${memberStockReply.reply_text}" />
 																		</c:otherwise>
 																	</c:choose></td>
-																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
-																		value="${memberStockReply.reg_date}" /></td>
 															</tr>
 														</c:forEach>
 													</tbody>
@@ -308,7 +323,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 															<th style="width: 100px">번호</th>
 															<th style="width: 250px">게시글 제목</th>
 															<th style="width: 250px">내용</th>
-															<th style="width: 150px">작성일자</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -339,8 +353,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 																			<c:out value="${memberEstateReply.reply_text}" />
 																		</c:otherwise>
 																	</c:choose></td>
-																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
-																		value="${memberEstateReply.reg_date}" /></td>
 															</tr>
 														</c:forEach>
 													</tbody>
@@ -356,7 +368,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 															<th style="width: 100px">번호</th>
 															<th style="width: 250px">게시글 제목</th>
 															<th style="width: 250px">내용</th>
-															<th style="width: 150px">작성일자</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -387,8 +398,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 																			<c:out value="${memberFreeReply.reply_text}" />
 																		</c:otherwise>
 																	</c:choose></td>
-																<td><fmt:formatDate pattern="yyyy-MM-dd-hh-mm-ss"
-																		value="${memberFreeReply.reg_date}" /></td>
 															</tr>
 														</c:forEach>
 													</tbody>
@@ -400,7 +409,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							</div>
 						</div>
 					</div>
-				</div> 
+				</div>
 				<!-- /.content -->
 			</div>
 			<!-- /.content-wrapper -->
@@ -422,11 +431,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<%@ include file="../include/footer.jsp"%>
 		<!-- REQUIRED SCRIPTS -->
 		<%@ include file="../include/plugin_js.jsp"%>
-		<script type="text/javascript">
-			<script src="${path}/plugins/datatables/js/jquery.dataTables.min.js">
-		</script>
+		<script src="${path}/plugins/datatables/js/jquery.dataTables.min.js"></script>
 		<script
-			src="${path}/plugin/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+			src="${path}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
 		<script>
 			$(document).ready(function() {
 

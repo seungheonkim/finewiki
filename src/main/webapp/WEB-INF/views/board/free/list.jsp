@@ -55,14 +55,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<thead>
 											<tr>
 												<th style="width: 30px">#</th>
-												<th>제목</th>
-												<td><a
-													href="${path}/board/free/read${pageMaker.makeSearch(pageMaker.criteria.page)}&data_no=${free.data_no}">
-														${free.title} </a> <span class="badge bg-teal"><i
-														class="fas fa-comment"></i> + ${free.reply_cnt}</span></td>
-
+												<th style="width: 150px">제목</th>
+												<th>내용</th>
 												<th style="width: 100px">작성자</th>
-												<th style="width: 150px">작성시간</th>
 												<th style="width: 60px">조회</th>
 											</tr>
 										</thead>
@@ -73,10 +68,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 													<td><a
 														href="${path}/board/free/read${pageMaker.makeSearch(pageMaker.criteria.page)}&data_no=${free.data_no}">
 															${free.title} </a></td>
-													<td>${free.reply_cnt}</td>
+													<td><a
+														href="${path}/board/free/read${pageMaker.makeSearch(pageMaker.criteria.page)}&data_no=${free.data_no}">${free.content}</a></td>
 													<td>${free.mem_nick}</td>
-													<td><fmt:formatDate value="${free.regdate}"
-															pattern="yyyy-MM-dd-hh-mm-ss" /></td>
 													<td><span class="badge bg-success">${free.hit}</span></td>
 												</tr>
 											</c:forEach>
@@ -201,13 +195,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 																	"#keywordInput")
 																	.val());
 												});
-								$("#writeBtn")
-								.on(
-										"click",
-										function(event){
-											self.location = "${path}/board/free/write"
-											
-										});
+								$("#writeBtn").on("click", function(event) {
+									self.location = "${path}/board/free/write"
+
+								});
 							});
 		</script>
 </body>

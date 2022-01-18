@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,6 +32,7 @@ import com.sesac.finewiki.vo.EstateReplyVo;
 import com.sesac.finewiki.vo.EstateVo;
 import com.sesac.finewiki.vo.FreeReplyVo;
 import com.sesac.finewiki.vo.FreeVo;
+import com.sesac.finewiki.vo.LoginDTO;
 import com.sesac.finewiki.vo.MemberVo;
 import com.sesac.finewiki.vo.ReplyVo;
 import com.sesac.finewiki.vo.StockReplyVo;
@@ -59,7 +61,12 @@ public class MemberInfoController {
 	private EstateReplyService estateReplyService;
 	@Inject
 	private FreeReplyService freeReplyService;
-	
+
+	// 로그인 페이지
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public String modGET(@ModelAttribute("loginDTO") LoginDTO loginDTO) {
+		return "/member/modify";
+	}
 
 	@Resource(name = "mem_imagePath")
 	private String mem_imagePath;
@@ -172,7 +179,6 @@ public class MemberInfoController {
 		model.addAttribute("memberStockReplies", memberStockReplies);
 		model.addAttribute("memberEstateReplies", memberEstateReplies);
 		model.addAttribute("memberFreeReplies", memberFreeReplies);
-		
 
 		return "member/profile";
 	}

@@ -172,7 +172,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<div class="card">
 								<div class="card-header border-0">
 									<div class="d-flex justify-content-between">
-										<h3 class="card-title">주요재무</h3>
+										<h3 class="card-title">주요 재무</h3>
 										<a href="javascript:void(0);">자세한 분석 보기</a>
 									</div>
 								</div>

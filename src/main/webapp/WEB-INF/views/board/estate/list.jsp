@@ -55,14 +55,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<thead>
 											<tr>
 												<th style="width: 30px">#</th>
-												<th>제목</th>
-												<td><a
-													href="${path}/board/estate/read${pageMaker.makeSearch(pageMaker.criteria.page)}&data_no=${estate.data_no}">
-														${estate.title} </a> <span class="badge bg-teal"><i
-														class="fas fa-comment"></i> + ${estate.reply_cnt}</span></td>
-
+												<th style="width: 150px">제목</th>
+												<th>내용</th>
 												<th style="width: 100px">작성자</th>
-												<th style="width: 150px">작성시간</th>
 												<th style="width: 60px">조회</th>
 											</tr>
 										</thead>
@@ -73,10 +68,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 													<td><a
 														href="${path}/board/estate/read${pageMaker.makeSearch(pageMaker.criteria.page)}&data_no=${estate.data_no}">
 															${estate.title} </a></td>
-													<td>${estate.reply_cnt}</td>
+													<td><a
+														href="${path}/board/estate/read${pageMaker.makeSearch(pageMaker.criteria.page)}&data_no=${estate.data_no}">${estate.content}</a></td>
 													<td>${estate.mem_nick}</td>
-													<td><fmt:formatDate value="${estate.regdate}"
-															pattern="yyyy-MM-dd-hh-mm-ss" /></td>
 													<td><span class="badge bg-success">${estate.hit}</span></td>
 												</tr>
 											</c:forEach>
