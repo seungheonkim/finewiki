@@ -5,7 +5,9 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en">
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <%@ include file="../../include/head.jsp"%>
 <body class="hold-transition sidebar-mini layout-boxed">
 	<div class="wrapper">
@@ -24,7 +26,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-						<h1 class="m-0">주식 게시판</h1>
+							<h1 class="m-0">주식 게시판</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
@@ -52,30 +54,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								</div>
 								<div class="card-body" style="height: 700px">
 									${stock.content}</div>
-								<div class="card card-primary card-outline">
-									<%--댓글 유무 / 댓글 갯수 / 댓글 펼치기, 접기--%>
-									<div class="card-header">
-										<a href="" class="link-black text-lg"><i
-											class="fas fa-comments margin-r-5 replyCount"></i></a>
-										<div class="card-tools">
-											<button type="button" class="btn primary"
-												data-widget="collapse">
-												<i class="fa fa-plus"></i>
-											</button>
-										</div>
-									</div>
-									<%--댓글 목록--%>
-									<div class="card-body repliesDiv"></div>
-									<%--댓글 페이징--%>
-									<div class="card-footer">
-										<nav aria-label="Contacts Page Navigation">
-											<ul
-												class="pagination pagination-sm no-margin justify-content-center m-0">
-											</ul>
-										</nav>
-									</div>
-								</div>
-									
+
+
 
 								<div class="card-footer">
 									<div class="user-block">
@@ -89,10 +69,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								<div class="card-footer">
 									<form role="form" method="post">
 										<input type="hidden" name="data_no" value="${stock.data_no}">
-										<input type="hidden" name="page" value="${searchCriteria.page}">
-										<input type="hidden" name="perPageNum"
-											value="${searchCriteria.perPageNum}"> <input
-											type="hidden" name="searchType"
+										<input type="hidden" name="page"
+											value="${searchCriteria.page}"> <input type="hidden"
+											name="perPageNum" value="${searchCriteria.perPageNum}">
+										<input type="hidden" name="searchType"
 											value="${searchCriteria.searchType}"> <input
 											type="hidden" name="keyword"
 											value="${searchCriteria.keyword}">
@@ -136,6 +116,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											class="fa fa-edit"></i> 로그인 한 사용자만 댓글 등록이 가능합니다.
 										</a>
 									</c:if>
+								</div>
+								<div class="card card-primary card-outline">
+									<%--댓글 유무 / 댓글 갯수 / 댓글 펼치기, 접기--%>
+									<div class="card-header">
+										<a href="" class="link-black text-lg"><i
+											class="fas fa-comments margin-r-5 replyCount"></i></a>
+										<div class="card-tools">
+											<button type="button" class="btn primary"
+												data-widget="collapse">
+												<i class="fa fa-plus"></i>
+											</button>
+										</div>
+									</div>
+									<%--댓글 목록--%>
+									<div class="card-body repliesDiv"></div>
+									<%--댓글 페이징--%>
+									<div class="card-footer">
+										<nav aria-label="Contacts Page Navigation">
+											<ul
+												class="pagination pagination-sm no-margin justify-content-center m-0">
+											</ul>
+										</nav>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -186,8 +189,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			});
 		});
 	</script>
-<script id="replyTemplate" type="text/x-handlebars-template">
- {{#each.}}
+	<script id="replyTemplate" type="text/x-handlebars-template">
+ {{#each .}}
  <div class="post replyDiv" data-reply_no={{reply_no}}> 
 <div class="user-block"> 
 <img class="img-circle img-bordered-sm" src="${path}/dist/img/user1-128x128.jpg" alt="user image">
@@ -202,7 +205,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
  </a> 
 {{/eqReplyWriter}} 
 </span>
- <span class="description">{{prettifyDate reg_date}}</span>
  </div> 
 <div class="oldReplyText">{{reply_text}}</div>
  <br/>
@@ -215,35 +217,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
 						function() {
 							var formObj = $("form[role='form']");
 							console.log(formObj);
-							$(".modBtn")
-									.on(
-											"click",
-											function() {
-												formObj
-														.attr("action",
-																"${path}/board/stock/modify");
-												formObj.attr("method", "get");
-												formObj.submit();
-											});
-							$(".delBtn")
-									.on(
-											"click",
-											function() {
-												formObj
-														.attr("action",
-																"${path}/board/stock/remove");
-												formObj.submit();
-											});
-							$(".listBtn")
-									.on(
-											"click",
-											function() {
-												formObj
-														.attr("action",
-																"${path}/board/stock/list");
-												formObj.attr("method", "get");
-												formObj.submit();
-											});
+							$(".modBtn").on(
+									"click",
+									function() {
+										formObj.attr("action",
+												"${path}/board/stock/modify");
+										formObj.attr("method", "get");
+										formObj.submit();
+									});
+							$(".delBtn").on(
+									"click",
+									function() {
+										formObj.attr("action",
+												"${path}/board/stock/remove");
+										formObj.submit();
+									});
+							$(".listBtn").on(
+									"click",
+									function() {
+										formObj.attr("action",
+												"${path}/board/stock/list");
+										formObj.attr("method", "get");
+										formObj.submit();
+									});
 							var data_no = "${stock.data_no}";// 현재 게시글 번호
 							var replyPageNum = 1; // 댓글 페이지 번호 초기화
 
@@ -273,9 +269,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										: minutes;
 								return year + "-" + month + "-" + date;
 							});
-							Handlebars
-							.registerHelper(
-									"eqReplyWriter",
+							Handlebars.registerHelper("eqReplyWriter",
 									function(reply_writer, block) {
 										var accum = "";
 										if (reply_writer === "${login.nick}") {

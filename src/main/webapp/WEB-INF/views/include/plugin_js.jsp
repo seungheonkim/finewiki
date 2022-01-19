@@ -14,13 +14,44 @@
 <script src="${path}/plugins/ekko-lightbox/ekko-lightbox.js"></script>
 <!-- AdminLTE App -->
 <script src="${path}/dist/js/pages/dashboard3.js"></script>
+<script src="${path}/dist/js/pages/dashboard2.js"></script>
+<script src="${path}/dist/js/pages/dashboard.js"></script>
+
 <!-- OPTIONAL SCRIPTS -->
+
 <script src="${path}/plugins/chart.js/Chart.min.js"></script>
 <script src="${path}/plugins/chart.js/Chart.js"></script>
 <script src="${path}/plugins/chart.js/Chart.bundle.min.js"></script>
 <script src="${path}/plugins/chart.js/Chart.bundle.js"></script>
 <script src="${path}/plugins/chart.js/utils.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="${path}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="${path}/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="${path}/plugins/raphael/raphael.min.js"></script>
+<script src="${path}/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="${path}/plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Sparkline -->
+<script src="${path}/plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="${path}/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="${path}/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="${path}/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="${path}/plugins/moment/moment.min.js"></script>
+<script src="${path}/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="${path}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="${path}/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
 <!-- chartjs -->
 
 <script>
